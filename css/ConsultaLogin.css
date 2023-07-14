@@ -1,0 +1,13 @@
+.CardLogin{
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.CardImgTopLogin{
+    width: 50%;
+    height: auto;
+    margin: 0%;
+    /*margin-top: -75px;*/
+}

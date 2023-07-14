@@ -1,0 +1,37 @@
+.BannerServicios{
+    background-image: url('../img/kinesiología-825x360.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.BannerContentServicios{
+    background-color: rgba(255, 255, 255, 0.75);
+    filter: opacity(1);
+}
+
+
+.imgContentBoxServicios{
+    display: flex;
+    /*position:relative;*/
+    justify-content:space-around;
+    overflow: hidden;
+}
+
+.ContentImgServicios{
+    width: 150px;
+    height: 150px;
+    position:relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 5px;
+    align-items: center;
+}
+
+.ContentImgServicios img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    align-items: center;
+    margin-left: 5px;
+}

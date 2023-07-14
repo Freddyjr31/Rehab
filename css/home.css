@@ -1,0 +1,89 @@
+.bannerHome {
+    background-image: url('../img/banner.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 15px;
+}
+
+.BannerHomeContentImg {
+    padding: 350px;
+}
+
+.imgContentBox{
+    display: flex;
+    /*position:relative;*/
+    justify-content:space-around;
+    overflow: hidden;
+}
+
+.ContentImg{
+    width: 50px;
+    height: 400px;
+    position:relative;
+    overflow: hidden;
+    border-radius: 5%;
+    margin: 5px;
+    align-items: center;
+}
+
+.ContentImg img{
+    height: 100%;
+    width: auto;
+    border-radius: 15px;
+    align-items: center;
+    margin-left: -275px;
+}
+
+#ContentImgOrder1{
+    margin-top: 200px;
+}
+#ContentImgOrder2{
+    margin-top: 100px;
+}
+#ContentImgOrder3{
+    margin-top: 0px;
+}
+
+.imgContent{
+    border-radius: 15px;
+}
+
+
+.CardsHome{
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    align-items: center;
+    opacity: 0.7;
+    transition: 0.5s ease;
+}
+
+.CardsHome:hover{
+    opacity: 1;
+}
+
+.CardImgTop{
+    padding: 10px;
+    width: 100px;
+    height: auto;
+}
+
+
+.BannerCN{
+    background-image: url('../img/pexels-picjumbocom-461077.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.BannerContentCN{
+    background-color: rgba(255, 255, 255, 0.75);
+    filter: opacity(1);
+}
+
+/* footer */
+.Icons{
+    height: 25px;
+    width: 25px;
+}
