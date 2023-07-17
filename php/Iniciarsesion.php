@@ -34,7 +34,15 @@
                 $_SESSION['nombre'] = $row['nombre'];
                 $_SESSION['apellido'] = $row['apellido'];
                 $_SESSION['id'] = $row['id_usuarios'];
-                header("Location: admin.php");
+
+                if ($row['rol_id'] == 1){
+                    header("Location: admin.php");
+                }elseif ($row['rol_id'] == 2){
+                    header("Location: usuario.php");
+                }elseif ($row['rol_id'] == 3){
+                    header("Location: trabajador.php");
+                }
+                
                 exit();
             }else {
                 header("Location: consulta.php?error=El usuario o la clave son incorrectas");

@@ -1,9 +1,27 @@
 <?php
-session_start();
+    session_start();
 
-if (($_SESSION['usuario']) == NULL) {
-    header('Location: consulta.php');
-}
+    if (($_SESSION['usuario']) == NULL) {
+        header('Location: consulta.php');
+    }
+
+    include('conexionbd.php');
+
+    $sql = "SELECT usuarios.*, roles.rol AS nombre_rol, estatus_usuario.estatus_usuario AS estatus FROM usuarios JOIN roles ON usuarios.rol_id = roles.id JOIN estatus_usuario ON usuarios.id_estatus_usuario = estatus_usuario.id";
+    $resultado = $mysqli->query($sql);
+
+    $sql2 = "SELECT citas.*, estatus_cita.estatus AS cita_estatus, servicios.nombre_servicio AS servicio, usuarios.* FROM citas JOIN estatus_cita ON citas.id_estatus = estatus_cita.id JOIN servicios ON citas.id_servicio = servicios.id";
+
+    $sql3 = "SELECT citas.*, usuarios.nombre AS nombre_cliente, usuarios.nombre AS nombre_trabajador, servicios.nombre_servicio AS nombre_servicio, estatus_cita.estatus AS nombre_estatus
+    FROM citas
+    JOIN usuarios AS usuarios_cliente ON citas.id_cliente = usuarios.id_usuarios
+    JOIN usuarios AS usuarios_trabajador ON citas.id_trabajador = usuarios.id_usuarios
+    JOIN servicios ON citas.id_servicio = servicios.id
+    JOIN estatus_cita ON citas.id_estatus = estatus_cita.id";
+
+    // $sql2 = "SELECT * FROM citas";
+    $citas = $mysqli->query($sql3);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,7 +82,7 @@ if (($_SESSION['usuario']) == NULL) {
                             <h3 class="mt-3">Crear usuarios</h3>
                             <hr>
                             <!-- USUARIOS PENDIENTES POR VALIDAR -->
-                            <form class="row g-4" action="" method="post">
+                            <form class="row g-4" action="registrar_trabajador.php" method="post">
                                 <div class="col-md-4">
                                     <label for="" class="form-label">Nombre : </label>
                                     <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" />
@@ -95,10 +113,10 @@ if (($_SESSION['usuario']) == NULL) {
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">tipo de usuario : </label>
-                                    <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo">
+                                    <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo">
                                         <option selected>... </option>
-                                        <option value="C">cliente</option>
-                                        <option value="T">trabajador</option>
+                                        <option value="1">cliente</option>
+                                        <option value="2">trabajador</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12">
@@ -122,31 +140,34 @@ if (($_SESSION['usuario']) == NULL) {
                                         <th scope="col">cédula</th>
                                         <th scope="col">Teléfono</th>
                                         <th scope="col">Estatus</th>
+                                        <th scope="col">Rol</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
-                                        <td>28654987</td>
-                                        <td>05466489492</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">cambiar estatus</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td colspan="2">Larry the Bird</td>
-                                        <td>@twitter</td>
-                                    </tr>
+                                    <?php
+                                    
+                                        if ($resultado->num_rows > 0){
+                                            while ($fila = $resultado->fetch_assoc()){
+                                                echo "<tr>
+                                                        <th scope='row'>1</th>
+                                                        <td>". $fila["nombre"] . "</td>
+                                                        <td>". $fila["apellido"] ."</td>
+                                                        <td>". $fila["correo_usuario"] ."</td>
+                                                        <td>". $fila["cedula"] ."</td>
+                                                        <td>". $fila["telefono"] ."</td>
+                                                        <td>". $fila["nombre_rol"] ."</td>
+                                                        <td>". $fila["estatus"] ."</td>
+                                                        <td>
+                                                            <button type='submit' id='cambiar-estatus' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>Cambiar Estatus</button>
+                                                        </td>
+                                                    </tr>";
+                                            }
+                                        }else{
+                                            echo "No existen usuarios";
+                                        }
+                                    
+                                    ?>
                                 </tbody>
                             </table>
 
@@ -180,6 +201,83 @@ if (($_SESSION['usuario']) == NULL) {
                             <h3>Citas completadas</h3>
                             <!-- VER CITAS COMPLETADAS PARA ARCHIVARLAS -->
                             <hr>
+                            <?php
+                            
+                            if ($citas->num_rows > 0){
+                                while ($fila2 = $citas->fetch_assoc()){
+                                    echo '<div class="row row-cols-1 row-cols-md-12 g-3">
+                                            <div class="col-md">
+                                                <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
+                                                    <div class="card-body">
+                                                        <div class="row g-4">
+                                                            <div class="col-sm-6">
+                                                                <p><b>Servicio: </b>'. $fila2['servicio'] .'</p>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p><b>Especialista: </b>'. $fila2['servicio'] .'</p>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p><b>Fecha y Hora: </b> adffasdfasfasdf</p>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <p><b>Estatus: </b><span class="badge rounded-pill text-bg-success"> completada </span></p>
+                                                            </div>
+                                                            <form class="row g-3" action="">
+                                                                <div class="col-sm-6">
+                                                                    <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
+                                                                        <option selected>Cambiar Estatus </option>
+                                                                        <option value="1">estatus 1</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <button type="submit" class="btn btn-primary">Actualizar estatus</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                }
+                            }else{
+                                echo "No existen citas";
+                            }
+
+                            ?>
+                            <div class="row row-cols-1 row-cols-md-12 g-3">
+                                <div class="col-md">
+                                    <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
+                                        <div class="card-body">
+                                            <div class="row g-4">
+                                                <div class="col-sm-6">
+                                                    <p><b>Servicio :</b> nbfdsfn </p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p><b>Especialista :</b> dsafadsfadsfafa</p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p><b>Fecha y Hora :</b> adffasdfasfasdf</p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p><b>Estatus :</b><span class="badge rounded-pill text-bg-success"> completada </span></p>
+                                                </div>
+                                                <form class="row g-3" action="">
+                                                    <div class="col-sm-6">
+                                                        <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
+                                                            <option selected>Cambiar Estatus </option>
+                                                            <option value="1">estatus 1</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <button type="submit" class="btn btn-primary">Actualizar estatus</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row row-cols-1 row-cols-md-12 g-3">
                                 <div class="col-md">
                                     <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">

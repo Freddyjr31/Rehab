@@ -36,7 +36,7 @@
                 <div class="col mb-3">
                     <div class="card border-0 h-100 p-3 shadow CardLogin">
                         <div class="card-body">
-                            <form class="row g-4" action="Iniciarsesion.php" method="post">
+                            <form class="row g-4" action="registrar_cliente.php" method="post">
                                 <?php
                                 if (isset($_GET['error'])) {
                                 ?>

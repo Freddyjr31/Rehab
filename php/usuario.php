@@ -35,10 +35,10 @@
             <div class="col">
                 <h2>[Nombre] <small class="text-body-secondary">Consulta y agenda tus citas</small></h2>
             </div>
-            <!-- boton de cerrar cesion -->
-            <div class="col d-flex justify-content-end">
-                <button class="btn btn-danger">Cerrar sesión</button>
-            </div>
+            <!-- boton de cerrar sesion -->
+            <form action="CerrarSesion.php" method="POST" class="col d-flex justify-content-end">
+                    <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                </form>
 
         </div>
         <hr>
