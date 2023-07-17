@@ -59,6 +59,10 @@
                                     <input type="text" name="apellido" placeholder="" id="apellido" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
+                                    <label for="" class="form-label">Cédula : </label>
+                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
                                     <label for="" class="form-label">Correo : </label>
                                     <input type="email" name="correo" placeholder="" id="correo" class="form-control" />
                                 </div>
@@ -74,7 +78,7 @@
                                         <option value="F">Femenino</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña : </label>
                                     <input type="password" name="password" placeholder="" id="password" class="form-control" />
                                 </div>

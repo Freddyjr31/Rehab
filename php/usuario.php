@@ -158,18 +158,6 @@
                         <hr>
                         <!-- FORMULARIO PARA AGENDAR CITAS -->
                         <form class="row g-4 mt-2">
-                            <div class="col-sm-4">
-                                <label for="" class="form-label">Nombre : </label>
-                                <input placeholder="Nombre" type="text" class="form-control" id="" required />
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="" class="form-label">Apellido : </label>
-                                <input placeholder="Apellido" type="text" class="form-control" id="" required />
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="" class="form-label">Cedula</label>
-                                <input type="number" class="form-control" id="" placeholder="cedula" required />
-                            </div>
                             <div class="col-sm-6">
                                 <label for="" class="form-label">Servicio : </label>
                                 <select class="form-select" aria-label="Default select example" name="servicio" placeholder="" id="servicio" required>
@@ -184,8 +172,27 @@
                                     <option value="1">Nombre 1</option>
                                 </select>
                             </div>
+                            <!-- fecha uno --> 
                             <div class="col-sm-6">
-                                <label class="form-label">Fecha : </label>
+                                <label class="form-label">Fecha tentatia 1: </label>
+                                <input class="form-control" type="date" name="fechaCita" min="2023-07-15" max="2030-12-31" required />
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Hora :</label>
+                                <input class="form-control" id="horaCita" type="time" name="horaCita" required />
+                            </div>
+                            <!-- fecha dos --> 
+                            <div class="col-sm-6">
+                                <label class="form-label">Fecha tentatia 2: </label>
+                                <input class="form-control" type="date" name="fechaCita" min="2023-07-15" max="2030-12-31" required />
+                            </div>
+                            <div class="col-sm-6">
+                                <label class="form-label">Hora :</label>
+                                <input class="form-control" id="horaCita" type="time" name="horaCita" required />
+                            </div>
+                            <!-- fecha tres --> 
+                            <div class="col-sm-6">
+                                <label class="form-label">Fecha tentatia 3: </label>
                                 <input class="form-control" type="date" name="fechaCita" min="2023-07-15" max="2030-12-31" required />
                             </div>
                             <div class="col-sm-6">

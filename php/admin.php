@@ -75,6 +75,10 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
+                                    <label for="" class="form-label">Cédula : </label>
+                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
                                     <label for="" class="form-label">Correo : </label>
                                     <input type="email" name="correo" placeholder="" id="correo" class="form-control" />
                                 </div>
@@ -83,16 +87,16 @@
                                     <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Contraseña : </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" />
-                                </div>
-                                <div class="col-md-6">
                                     <label for="" class="form-label">tipo de usuario : </label>
                                     <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo">
                                         <option selected>... </option>
                                         <option value="C">cliente</option>
                                         <option value="T">trabajador</option>
                                     </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="" class="form-label">Contraseña : </label>
+                                    <input type="password" name="password" placeholder="" id="password" class="form-control" />
                                 </div>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3">Crear usuario</button>
                             </form>
