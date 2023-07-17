@@ -15,12 +15,7 @@
     $mysqli = new mysqli($hostname,$username, $password,$dbname,3306);
 
     if ($mysqli->connect_errno) {
-        echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+        die("Conexión fallida: " . $mysqli->connect_errno);
     }
-    echo $mysqli->host_info . "\n";
-
-    $result = mysqli_query($mysqli,$query);
-    echo "Numero de resultados: $result";
-    $result->close();
 
 ?>

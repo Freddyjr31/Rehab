@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+if (($_SESSION['usuario']) == NULL) {
+    header('Location: consulta.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -38,9 +45,9 @@
                     <h2>Panel de Administración</h2>
                 </div>
                 <!-- boton de cerrar sesion -->
-                <div class="col d-flex justify-content-end">
-                    <button class="btn btn-danger">Cerrar sesión</button>
-                </div>
+                <form action="CerrarSesion.php" method="POST" class="col d-flex justify-content-end">
+                    <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                </form>
 
             </div>
             <hr>
