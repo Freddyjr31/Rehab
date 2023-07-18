@@ -36,7 +36,7 @@
                 <div class="col mb-3">
                     <div class="card border-0 h-100 p-3 shadow CardLogin">
                         <div class="card-body">
-                            <form class="row g-4" action="registrar_cliente.php" method="post">
+                        <form class="row g-4" action="Iniciarsesion.php" method="post">
                                 <?php
                                 if (isset($_GET['error'])) {
                                 ?>
@@ -51,36 +51,77 @@
                                 ?>
 
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Nombre : </label>
-                                    <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" />
+                                    <label for="" class="form-label">Nombre * </label>
+                                    <input required type="text" name="nombre" placeholder="" id="nombre" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Apellido : </label>
-                                    <input type="text" name="apellido" placeholder="" id="apellido" class="form-control" />
+                                    <label for="" class="form-label">Apellido * </label>
+                                    <input required type="text" name="apellido" placeholder="" id="apellido" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Cédula : </label>
-                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" />
+                                    <label for="" class="form-label">Cédula * </label>
+                                    <input required type="number" name="cedula" placeholder="" id="cedula" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Correo : </label>
-                                    <input type="email" name="correo" placeholder="" id="correo" class="form-control" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">telefono : </label>
-                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Sexo : </label>
-                                    <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo">
+                                    <label for="" class="form-label">Sexo * </label>
+                                    <select required class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo">
                                         <option selected>... </option>
                                         <option value="M">Masculino</option>
                                         <option value="F">Femenino</option>
                                     </select>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Correo * </label>
+                                    <input required type="email" name="correo" placeholder="" id="correo" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Dominio * </label>
+                                    <select required class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
+                                        <option selected>... </option>
+                                        <option value="g">@gmail.com</option>
+                                        <option value="h">@hotmail.com</option>
+                                        <option value="y">@yahoo.com</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Código de área * </label>
+                                    <select required class="form-select" aria-label="Default select example" name="Codigo" placeholder="" id="Codigo">
+                                        <option selected>... </option>
+                                        <option value="MoV14">0414</option>
+                                        <option value="Mov24">0424</option>
+                                        <option value="Mov16">0416</option>
+                                        <option value="Mov26">0426</option>
+                                        <option value="Dig12">0412</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">telefono * </label>
+                                    <input required type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
+                                </div>
+                                
+                                
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Código de área </label>
+                                    <select class="form-select" aria-label="Default select example" name="CodigoOPC" placeholder="" id="CodigoOPC">
+                                        <option selected>... </option>
+                                        <option value="MoV14">0414</option>
+                                        <option value="Mov24">0424</option>
+                                        <option value="Mov16">0416</option>
+                                        <option value="Mov26">0426</option>
+                                        <option value="Dig12">0412</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">télefono : </label>
+                                    <input type="text" name="telefonoOPC" placeholder="" id="telefonoOPC" class="form-control" />
+                                </div>
+                                
+                                
+                                
                                 <div class="col-md-12">
-                                    <label for="" class="form-label">Contraseña : </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" />
+                                    <label for="" class="form-label">Contraseña * </label>
+                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required/>
                                 </div>
 
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3">Registrarme</button>
@@ -166,6 +207,7 @@
     <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/personalizados/registrate.js"></script>
 </body>
 
 </html>

@@ -86,27 +86,28 @@
                             <h3 class="mt-3">Crear usuarios</h3>
                             <hr>
                             <!-- USUARIOS PENDIENTES POR VALIDAR -->
-                            <form class="row g-4" action="registrar_trabajador.php" method="post">
-                                <div class="col-md-4">
-                                    <label for="" class="form-label">Nombre : </label>
-                                    <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" />
+                            <form class="row g-4" action="" method="post">
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Nombre * </label>
+                                    <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" required/>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="" class="form-label">Apellido : </label>
-                                    <input type="text" name="apellido" placeholder="" id="apellido" class="form-control" />
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Apellido * </label>
+                                    <input type="text" name="apellido" placeholder="" id="apellido" class="form-control" required/>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="" class="form-label">Sexo : </label>
-                                    <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo">
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Sexo * </label>
+                                    <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo" required>
                                         <option selected>... </option>
                                         <option value="M">Masculino</option>
                                         <option value="F">Femenino</option>
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Cédula : </label>
-                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" />
+                                    <label for="" class="form-label">Cédula * </label>
+                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" required/>
                                 </div>
+
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Correo : </label>
                                     <input type="text" name="correo" placeholder="" id="correo" class="form-control" />
@@ -157,9 +158,51 @@
                                         ?>
                                     </select>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Código de área * </label>
+                                    <select required class="form-select" aria-label="Default select example" name="CodA" placeholder="" id="CodA">
+                                        <option selected>... </option>
+                                        <option value="MoV14">0414</option>
+                                        <option value="Mov24">0424</option>
+                                        <option value="Mov16">0416</option>
+                                        <option value="Mov26">0426</option>
+                                        <option value="Dig12">0412</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">telefono * </label>
+                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" required/>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Código de área</label>
+                                    <select class="form-select" aria-label="Default select example" name="CodigoOPC" placeholder="" id="CodigoOPC">
+                                        <option selected>... </option>
+                                        <option value="MoV14">0414</option>
+                                        <option value="Mov24">0424</option>
+                                        <option value="Mov16">0416</option>
+                                        <option value="Mov26">0426</option>
+                                        <option value="Dig12">0412</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">télefono </label>
+                                    <input type="text" name="telefonoOPC" placeholder="" id="telefonoOPC" class="form-control"/>
+                                </div>
+
                                 <div class="col-md-12">
-                                    <label for="" class="form-label">Contraseña : </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" />
+                                    <label for="" class="form-label">tipo de usuario * </label>
+                                    <select class="form-select" aria-label="Default select example" name="TipoUser" placeholder="" id="TipoUser" required>
+                                        <option selected>... </option>
+                                        <option value="C">cliente</option>
+                                        <option value="T">trabajador</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="" class="form-label">Contraseña * </label>
+                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required/>
                                 </div>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3">Crear usuario</button>
                             </form>
@@ -362,6 +405,7 @@
         <script src="../assets/js/bootstrap.js"></script>
         <script src="../assets/js/bootstrap.bundle.min.js"></script>
         <script src="../assets/js/popper.js"></script>
+        <script src="../assets/js/personalizados/AdminCrearUsuario.js"></script>
     </body>
 
 </html>

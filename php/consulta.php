@@ -56,8 +56,8 @@
                                 }
                                 ?>
 
-                                <input type="text" name="Usuario" placeholder="Usuario" id="usuario" class="form-control" />
-                                <input type="password" name="Clave" placeholder="Contraseña" id="clave" class="form-control" />
+                                <input type="text" name="Usuario" placeholder="Usuario" id="usuario" class="form-control" required/>
+                                <input type="password" name="Clave" placeholder="Contraseña" id="clave" class="form-control" required/>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
                                 <hr>
                                 <span class="text-center">¿No tienes una cuenta? <a href="./register.php" type="button" class=""> Registrate aquí</a></span>
@@ -143,6 +143,7 @@
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/popper.js"></script>
+    <script src="../assets/js/personalizados/Login.js"></script>
 </body>
 
 </html>
