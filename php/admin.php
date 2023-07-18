@@ -12,12 +12,7 @@
 
     $sql2 = "SELECT citas.*, estatus_cita.estatus AS cita_estatus, servicios.nombre_servicio AS servicio, usuarios.* FROM citas JOIN estatus_cita ON citas.id_estatus = estatus_cita.id JOIN servicios ON citas.id_servicio = servicios.id";
 
-    $sql3 = "SELECT citas.*, usuarios.nombre AS nombre_cliente, usuarios.nombre AS nombre_trabajador, servicios.nombre_servicio AS nombre_servicio, estatus_cita.estatus AS nombre_estatus
-    FROM citas
-    JOIN usuarios AS usuarios_cliente ON citas.id_cliente = usuarios.id_usuarios
-    JOIN usuarios AS usuarios_trabajador ON citas.id_trabajador = usuarios.id_usuarios
-    JOIN servicios ON citas.id_servicio = servicios.id
-    JOIN estatus_cita ON citas.id_estatus = estatus_cita.id";
+    $sql3 = "SELECT * FROM citas JOIN usuarios AS cliente ON cliente.id_usuarios = citas.id_cliente JOIN usuarios AS trabajador ON trabajador.id_usuarios = citas.id_trabajador JOIN estatus_cita ON estatus_cita.id = citas.id_estatus JOIN servicios ON servicios.id = citas.id_servicio";
 
     // $sql2 = "SELECT * FROM citas";
     $citas = $mysqli->query($sql3);
@@ -211,16 +206,16 @@
                                                     <div class="card-body">
                                                         <div class="row g-4">
                                                             <div class="col-sm-6">
-                                                                <p><b>Servicio: </b>'. $fila2['servicio'] .'</p>
+                                                                <p><b>Servicio: </b>'. $fila2['nombre_servicio'] .'</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Especialista: </b>'. $fila2['servicio'] .'</p>
+                                                                <p><b>Especialista: </b>'. $fila2['nombre'] .'</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Fecha y Hora: </b> adffasdfasfasdf</p>
+                                                                <p><b>Fecha y Hora: </b>'. $fila2['fecha'] .' '. $fila2['hora'] .'</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Estatus: </b><span class="badge rounded-pill text-bg-success"> completada </span></p>
+                                                                <p><b>Estatus: </b><span class="badge rounded-pill text-bg-success">'. $fila2['estatus'] .'</span></p>
                                                             </div>
                                                             <form class="row g-3" action="">
                                                                 <div class="col-sm-6">
@@ -244,73 +239,6 @@
                             }
 
                             ?>
-                            <div class="row row-cols-1 row-cols-md-12 g-3">
-                                <div class="col-md">
-                                    <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
-                                        <div class="card-body">
-                                            <div class="row g-4">
-                                                <div class="col-sm-6">
-                                                    <p><b>Servicio :</b> nbfdsfn </p>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p><b>Especialista :</b> dsafadsfadsfafa</p>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p><b>Fecha y Hora :</b> adffasdfasfasdf</p>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p><b>Estatus :</b><span class="badge rounded-pill text-bg-success"> completada </span></p>
-                                                </div>
-                                                <form class="row g-3" action="">
-                                                    <div class="col-sm-6">
-                                                        <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
-                                                            <option selected>Cambiar Estatus </option>
-                                                            <option value="1">estatus 1</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <button type="submit" class="btn btn-primary">Actualizar estatus</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row row-cols-1 row-cols-md-12 g-3">
-                                <div class="col-md">
-                                    <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
-                                        <div class="card-body">
-                                            <div class="row g-4">
-                                                <div class="col-sm-6">
-                                                    <p><b>Servicio :</b> nbfdsfn </p>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p><b>Especialista :</b> dsafadsfadsfafa</p>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p><b>Fecha y Hora :</b> adffasdfasfasdf</p>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <p><b>Estatus :</b><span class="badge rounded-pill text-bg-success"> completada </span></p>
-                                                </div>
-                                                <form class="row g-3" action="">
-                                                    <div class="col-sm-6">
-                                                        <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
-                                                            <option selected>Cambiar Estatus </option>
-                                                            <option value="1">estatus 1</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-sm-6">
-                                                        <button type="submit" class="btn btn-primary">Actualizar estatus</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
