@@ -24,13 +24,13 @@
 
         // $Clave = md5($Clave);
 
-        $sql = "SELECT * FROM usuarios WHERE correo_usuario = '$Usuario' AND Clave='$Clave'";
+        $sql = "SELECT * FROM usuarios INNER JOIN correos ON id_correo = usuarios.correo INNER JOIN dominios ON id_dominio = correos.dominio_id WHERE correos.nombre_correo = '$Usuario' AND usuarios.Clave='$Clave' AND dominios.nombre_dominio = '@gmail.com'";
         $result = mysqli_query($mysqli, $sql);
 
         if (mysqli_num_rows($result) === 1) {
             $row = mysqli_fetch_assoc($result);
-            if ($row['correo_usuario'] === $Usuario && $row['Clave'] === $Clave) {
-                $_SESSION['usuario'] = $row['correo_usuario'];
+            if ($row['nombre_correo'] === $Usuario && $row['Clave'] === $Clave) {
+                $_SESSION['usuario'] = $row['nombre_correo'];
                 $_SESSION['nombre'] = $row['nombre'];
                 $_SESSION['apellido'] = $row['apellido'];
                 $_SESSION['id'] = $row['id_usuarios'];

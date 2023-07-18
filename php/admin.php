@@ -10,12 +10,21 @@
     $sql = "SELECT usuarios.*, roles.rol AS nombre_rol, estatus_usuario.estatus_usuario AS estatus FROM usuarios JOIN roles ON usuarios.rol_id = roles.id JOIN estatus_usuario ON usuarios.id_estatus_usuario = estatus_usuario.id";
     $resultado = $mysqli->query($sql);
 
-    $sql2 = "SELECT citas.*, estatus_cita.estatus AS cita_estatus, servicios.nombre_servicio AS servicio, usuarios.* FROM citas JOIN estatus_cita ON citas.id_estatus = estatus_cita.id JOIN servicios ON citas.id_servicio = servicios.id";
+    // $sql2 = "SELECT citas.*, estatus_cita.estatus AS cita_estatus, servicios.nombre_servicio AS servicio, usuarios.* FROM citas JOIN estatus_cita ON citas.id_estatus = estatus_cita.id JOIN servicios ON citas.id_servicio = servicios.id";
 
     $sql3 = "SELECT * FROM citas JOIN usuarios AS cliente ON cliente.id_usuarios = citas.id_cliente JOIN usuarios AS trabajador ON trabajador.id_usuarios = citas.id_trabajador JOIN estatus_cita ON estatus_cita.id = citas.id_estatus JOIN servicios ON servicios.id = citas.id_servicio";
 
     // $sql2 = "SELECT * FROM citas";
     $citas = $mysqli->query($sql3);
+
+    $sql4 = "SELECT * FROM roles";
+    $roles = $mysqli->query($sql4);
+
+    $sql5 = "SELECT * FROM dominios";
+    $dominios = $mysqli->query($sql5);
+
+    $sql6 = "SELECT * FROM cod_area";
+    $cod_area = $mysqli->query($sql6);
 
 ?>
 <!DOCTYPE html>
@@ -100,18 +109,52 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Correo : </label>
-                                    <input type="email" name="correo" placeholder="" id="correo" class="form-control" />
+                                    <input type="text" name="correo" placeholder="" id="correo" class="form-control" />
+                                    <div class="col-md-6">
+                                        <label for="" class="form-label">Dominio: </label>
+                                        <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
+                                            <option selected>... </option>
+                                            <?php
+                                            if ($dominios->num_rows > 0){
+                                                while ($fila4 = $dominios->fetch_assoc()){
+                                                    echo '<option value="'. $fila4['id_dominio'] .'">'. $fila4['nombre_dominio'] .'</option>';
+                                                }
+                                            }
+                                            
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">telefono : </label>
+                                    <div class="col-md-6">
+                                        <label for="" class="form-label">Codigo de área: </label>
+                                        <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo">
+                                            <option selected>... </option>
+                                            <?php
+                                            if ($cod_area->num_rows > 0){
+                                                while ($fila5 = $cod_area->fetch_assoc()){
+                                                    echo '<option value="'. $fila5['id_cod'] .'">'. $fila5['area'] .'</option>';
+                                                }
+                                            }
+                                            
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <label for="" class="form-label">Telefono : </label>
                                     <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">tipo de usuario : </label>
+                                    <label for="" class="form-label">Tipo de usuario : </label>
                                     <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo">
                                         <option selected>... </option>
-                                        <option value="1">cliente</option>
-                                        <option value="2">trabajador</option>
+                                        <?php
+                                        if ($roles->num_rows > 0){
+                                            while ($fila3 = $roles->fetch_assoc()){
+                                                echo '<option value="'. $fila3['id'] .'">'. $fila3['rol'] .'</option>';
+                                            }
+                                        }
+                                        
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-12">
