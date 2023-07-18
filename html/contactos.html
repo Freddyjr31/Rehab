@@ -3,13 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Inversiones Rehab</title>
+    <title>Contactanos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.css" />
     <link rel="stylesheet" href="../css/home.css" />
     <link rel="stylesheet" href="../css/contactos.css" />
-    <script src="main.php"></script>
   </head>
   <body>
     <header>
@@ -58,13 +57,15 @@
 
          
           <!-- formulario de contacto -->
-          <form action="../php/models/EnviarCorreoContactos.php" method="post" class="row g-4 mt-2">
+          <form action="../php/models/EnviarCorreoContactos.php" id="FormContactos" method="post" class="row g-4 mt-2">
             <div class="col-md-6">
               <input
                 placeholder="Nombre"
                 type="text"
                 class="form-control"
-                id=""
+                id="NombreCorreo"
+                name="NombreCorreo"
+                required
               />
             </div>
             <div class="col-md-6">
@@ -72,7 +73,9 @@
                 placeholder="Email"
                 type="email"
                 class="form-control"
-                id=""
+                id="DireccionCorreo"
+                name="DireccionCorreo"
+                required
               />
             </div>
             <div class="col-sm-12">
@@ -80,8 +83,10 @@
               <input
                 type="text"
                 class="form-control"
-                id=""
+                id="AsuntoMail"
+                name="AsuntoMail"
                 placeholder="Asunto"
+                required
               />
             </div>
             <div class="col-sm-12">
@@ -89,12 +94,14 @@
               <textarea
                 class="form-control"
                 placeholder="Mensaje"
-                id=""
+                name="MensajeMail"
+                id="MensajeMail"
                 style="height: 120px"
+                required
               ></textarea>
             </div>
             <div class="col-sm-12">
-              <button type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
+              <button onclick="validateForm()" type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
             </div>
           </form>
         </div>
@@ -259,5 +266,8 @@
         </div>
       </div>
     </footer>
+
+    <!-- javaScript files -->
+    <script src="../assets/js/personalizados/MailContactos.js"></script>
   </body>
 </html>
