@@ -1,3 +1,11 @@
+<?php
+    include('conexionbd.php');
+
+    $sql5 = "SELECT * FROM dominios";
+    $dominios = $mysqli->query($sql5);
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -61,7 +69,7 @@
                                 </div>
 
                                 <div class="col-sm-4 p-0">
-                                    <select class="form-select" aria-label="Default select example" name="dominioLogin" placeholder="" id="dominioLogin" required>
+                                    <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominioLogin" required>
                                         <option selected>Dominio </option>
                                         <?php
                                         if ($dominios->num_rows > 0) {

@@ -13,6 +13,7 @@
 
     $Usuario = validate($_POST['Usuario']); 
     $Clave = validate($_POST['Clave']);
+    $dominio = validate($_POST['dominio']);
 
     if (empty($Usuario)) {
         header("Location: consulta.php?error=Se requiere el usuario");
@@ -24,7 +25,7 @@
 
         // $Clave = md5($Clave);
 
-        $sql = "SELECT * FROM usuarios INNER JOIN correos ON id_correo = usuarios.correo INNER JOIN dominios ON id_dominio = correos.dominio_id WHERE correos.nombre_correo = '$Usuario' AND usuarios.Clave='$Clave' AND dominios.nombre_dominio = '@gmail.com'";
+        $sql = "SELECT * FROM usuarios INNER JOIN correos ON id_correo = usuarios.correo INNER JOIN dominios ON id_dominio = correos.dominio_id WHERE correos.nombre_correo = '$Usuario' AND usuarios.Clave='$Clave' AND dominios.id_dominio = '$dominio'";
         $result = mysqli_query($mysqli, $sql);
 
         if (mysqli_num_rows($result) === 1) {

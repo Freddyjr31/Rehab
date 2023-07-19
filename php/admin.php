@@ -86,7 +86,7 @@
                             <h3 class="mt-3">Crear usuarios</h3>
                             <hr>
                             <!-- USUARIOS PENDIENTES POR VALIDAR -->
-                            <form class="row g-4" action="" method="post" id="FormCrearUsuarioAdmin">
+                            <form class="row g-4" action="registrar_trabajador.php" method="post" id="FormCrearUsuarioAdmin">
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Nombre * </label>
                                     <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" required />
@@ -97,7 +97,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Sexo * </label>
-                                    <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo" required>
+                                    <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo">
                                         <option selected>... </option>
                                         <option value="M">Masculino</option>
                                         <option value="F">Femenino</option>
@@ -115,8 +115,7 @@
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Dominio * </label>
-                                    <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio" required>
-                                        <option selected>... </option>
+                                    <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
                                         <?php
                                         if ($dominios->num_rows > 0) {
                                             while ($fila4 = $dominios->fetch_assoc()) {
@@ -131,7 +130,7 @@
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Codigo de área * </label>
-                                    <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo" required>
+                                    <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo">
                                         <option selected>... </option>
                                         <?php
                                         if ($cod_area->num_rows > 0) {
@@ -172,12 +171,12 @@
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Tipo de usuario * </label>
-                                    <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo" required>
+                                    <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo">
                                         <option selected>... </option>
                                         <?php
                                         if ($roles->num_rows > 0) {
                                             while ($fila3 = $roles->fetch_assoc()) {
-                                                echo '<option value="' . $fila3['id'] . '">' . $fila3['rol'] . '</option>';
+                                                echo '<option value="' . $fila3['Id'] . '">' . $fila3['rol'] . '</option>';
                                             }
                                         }
 
@@ -229,7 +228,7 @@
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required />
+                                    <input type="password" name="password" placeholder="" id="password" class="form-control" />
                                 </div>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateForm();">Crear usuario</button>
                             </form>
