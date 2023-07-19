@@ -1,5 +1,5 @@
 <?php
-    session_start();
+ session_start();
 
     if (($_SESSION['usuario']) == NULL) {
         header('Location: consulta.php');
@@ -47,7 +47,7 @@
     <header>
         <div class="wrapper">
             <div class="logo">
-                <img src="../img/RSB.png" class="mt-2"  width="150px" height="auto" alt="">
+                <img src="../img/RSB.png" class="mt-2" width="150px" height="auto" alt="">
             </div>
             <nav>
                 <a style="color:black" href="../index.php" ;>Inicio</a>
@@ -89,11 +89,11 @@
                             <form class="row g-4" action="" method="post">
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Nombre * </label>
-                                    <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" required/>
+                                    <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" required />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Apellido * </label>
-                                    <input type="text" name="apellido" placeholder="" id="apellido" class="form-control" required/>
+                                    <input type="text" name="apellido" placeholder="" id="apellido" class="form-control" required />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Sexo * </label>
@@ -105,60 +105,86 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Cédula * </label>
-                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" required/>
+                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" required />
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Correo : </label>
-                                    <input type="text" name="correo" placeholder="" id="correo" class="form-control" />
-                                    <div class="col-md-6">
-                                        <label for="" class="form-label">Dominio: </label>
-                                        <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
-                                            <option selected>... </option>
-                                            <?php
-                                            if ($dominios->num_rows > 0){
-                                                while ($fila4 = $dominios->fetch_assoc()){
-                                                    echo '<option value="'. $fila4['id_dominio'] .'">'. $fila4['nombre_dominio'] .'</option>';
-                                                }
-                                            }
-                                            
-                                            ?>
-                                        </select>
-                                    </div>
+                                    <label for="" class="form-label">Correo * </label>
+                                    <input type="text" name="correo" placeholder="" id="correo" class="form-control" required />
                                 </div>
+
                                 <div class="col-md-6">
-                                    <div class="col-md-6">
-                                        <label for="" class="form-label">Codigo de área: </label>
-                                        <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo">
-                                            <option selected>... </option>
-                                            <?php
-                                            if ($cod_area->num_rows > 0){
-                                                while ($fila5 = $cod_area->fetch_assoc()){
-                                                    echo '<option value="'. $fila5['id_cod'] .'">'. $fila5['area'] .'</option>';
-                                                }
-                                            }
-                                            
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <label for="" class="form-label">Telefono : </label>
-                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Tipo de usuario : </label>
-                                    <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo">
+                                    <label for="" class="form-label">Dominio * </label>
+                                    <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio" required>
                                         <option selected>... </option>
                                         <?php
-                                        if ($roles->num_rows > 0){
-                                            while ($fila3 = $roles->fetch_assoc()){
-                                                echo '<option value="'. $fila3['id'] .'">'. $fila3['rol'] .'</option>';
+                                        if ($dominios->num_rows > 0) {
+                                            while ($fila4 = $dominios->fetch_assoc()) {
+                                                echo '<option value="' . $fila4['id_dominio'] . '">' . $fila4['nombre_dominio'] . '</option>';
                                             }
                                         }
-                                        
+
                                         ?>
                                     </select>
                                 </div>
 
+
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Codigo de área * </label>
+                                    <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo" required>
+                                        <option selected>... </option>
+                                        <?php
+                                        if ($cod_area->num_rows > 0) {
+                                            while ($fila5 = $cod_area->fetch_assoc()) {
+                                                echo '<option value="' . $fila5['id_cod'] . '">' . $fila5['area'] . '</option>';
+                                            }
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Telefono * </label>
+                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
+                                </div>
+
+                                <!-- telefono opcional -->
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Codigo de área </label>
+                                    <select class="form-select" aria-label="Default select example" name="codigo2" placeholder="" id="codigo2">
+                                        <option selected>... </option>
+                                        <?php
+                                        if ($cod_area->num_rows > 0) {
+                                            while ($fila5 = $cod_area->fetch_assoc()) {
+                                                echo '<option value="' . $fila5['id_cod'] . '">' . $fila5['area'] . '</option>';
+                                            }
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Telefono </label>
+                                    <input type="text" name="telefono2" placeholder="" id="telefono2" class="form-control" />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <label for="" class="form-label">Tipo de usuario * </label>
+                                    <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo" required>
+                                        <option selected>... </option>
+                                        <?php
+                                        if ($roles->num_rows > 0) {
+                                            while ($fila3 = $roles->fetch_assoc()) {
+                                                echo '<option value="' . $fila3['id'] . '">' . $fila3['rol'] . '</option>';
+                                            }
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+                                <!-- 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Código de área * </label>
                                     <select required class="form-select" aria-label="Default select example" name="CodA" placeholder="" id="CodA">
@@ -199,10 +225,11 @@
                                         <option value="T">trabajador</option>
                                     </select>
                                 </div>
+                                    -->
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required/>
+                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required />
                                 </div>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3">Crear usuario</button>
                             </form>
@@ -227,27 +254,27 @@
                                 </thead>
                                 <tbody>
                                     <?php
-                                    
-                                        if ($resultado->num_rows > 0){
-                                            while ($fila = $resultado->fetch_assoc()){
-                                                echo "<tr>
+
+                                    if ($resultado->num_rows > 0) {
+                                        while ($fila = $resultado->fetch_assoc()) {
+                                            echo "<tr>
                                                         <th scope='row'>1</th>
-                                                        <td>". $fila["nombre"] . "</td>
-                                                        <td>". $fila["apellido"] ."</td>
-                                                        <td>". $fila["correo_usuario"] ."</td>
-                                                        <td>". $fila["cedula"] ."</td>
-                                                        <td>". $fila["telefono"] ."</td>
-                                                        <td>". $fila["nombre_rol"] ."</td>
-                                                        <td>". $fila["estatus"] ."</td>
+                                                        <td>" . $fila["nombre"] . "</td>
+                                                        <td>" . $fila["apellido"] . "</td>
+                                                        <td>" . $fila["correo_usuario"] . "</td>
+                                                        <td>" . $fila["cedula"] . "</td>
+                                                        <td>" . $fila["telefono"] . "</td>
+                                                        <td>" . $fila["nombre_rol"] . "</td>
+                                                        <td>" . $fila["estatus"] . "</td>
                                                         <td>
                                                             <button type='submit' id='cambiar-estatus' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>Cambiar Estatus</button>
                                                         </td>
                                                     </tr>";
-                                            }
-                                        }else{
-                                            echo "No existen usuarios";
                                         }
-                                    
+                                    } else {
+                                        echo "No existen usuarios";
+                                    }
+
                                     ?>
                                 </tbody>
                             </table>
@@ -283,25 +310,25 @@
                             <!-- VER CITAS COMPLETADAS PARA ARCHIVARLAS -->
                             <hr>
                             <?php
-                            
-                            if ($citas->num_rows > 0){
-                                while ($fila2 = $citas->fetch_assoc()){
+
+                            if ($citas->num_rows > 0) {
+                                while ($fila2 = $citas->fetch_assoc()) {
                                     echo '<div class="row row-cols-1 row-cols-md-12 g-3">
                                             <div class="col-md">
                                                 <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
                                                     <div class="card-body">
                                                         <div class="row g-4">
                                                             <div class="col-sm-6">
-                                                                <p><b>Servicio: </b>'. $fila2['nombre_servicio'] .'</p>
+                                                                <p><b>Servicio: </b>' . $fila2['nombre_servicio'] . '</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Especialista: </b>'. $fila2['nombre'] .'</p>
+                                                                <p><b>Especialista: </b>' . $fila2['nombre'] . '</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Fecha y Hora: </b>'. $fila2['fecha'] .' '. $fila2['hora'] .'</p>
+                                                                <p><b>Fecha y Hora: </b>' . $fila2['fecha'] . ' ' . $fila2['hora'] . '</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Estatus: </b><span class="badge rounded-pill text-bg-success">'. $fila2['estatus'] .'</span></p>
+                                                                <p><b>Estatus: </b><span class="badge rounded-pill text-bg-success">' . $fila2['estatus'] . '</span></p>
                                                             </div>
                                                             <form class="row g-3" action="">
                                                                 <div class="col-sm-6">
@@ -320,7 +347,7 @@
                                             </div>
                                         </div>';
                                 }
-                            }else{
+                            } else {
                                 echo "No existen citas";
                             }
 

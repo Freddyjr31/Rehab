@@ -17,8 +17,8 @@
 
     <header>
         <div class="wrapper">
-        <div class="logo">
-                <img src="../img/RSB.png" class="mt-2"  width="150px" height="auto" alt="">
+            <div class="logo">
+                <img src="../img/RSB.png" class="mt-2" width="150px" height="auto" alt="">
             </div>
 
             <nav>
@@ -42,7 +42,7 @@
                     <div class="card border-0 h-100 p-3 shadow CardLogin">
                         <img src="../img/icons/icons8-usuario-de-género-neutro-96.png" class="CardImgTopLogin" alt="...">
                         <div class="card-body">
-                            <form class="row g-4" action="Iniciarsesion.php" method="post">
+                            <form class="row g-4" action="Iniciarsesion.php" method="post" id="FormLogin">
                                 <?php
                                 if (isset($_GET['error'])) {
                                 ?>
@@ -56,9 +56,29 @@
                                 }
                                 ?>
 
-                                <input type="text" name="Usuario" placeholder="Usuario" id="usuario" class="form-control" required/>
-                                <input type="password" name="Clave" placeholder="Contraseña" id="clave" class="form-control" required/>
-                                <button type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
+                                <div class="col-sm-8 ps-1">
+                                    <input type="text" name="Usuario" placeholder="Usuario" id="usuario" class="form-control" required />
+                                </div>
+
+                                <div class="col-sm-4 p-0">
+                                    <select class="form-select" aria-label="Default select example" name="dominioLogin" placeholder="" id="dominioLogin" required>
+                                        <option selected>Dominio </option>
+                                        <?php
+                                        if ($dominios->num_rows > 0) {
+                                            while ($fila4 = $dominios->fetch_assoc()) {
+                                                echo '<option value="' . $fila4['id_dominio'] . '">' . $fila4['nombre_dominio'] . '</option>';
+                                            }
+                                        }
+
+                                        ?>
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-12 p-0">
+                                    <input type="password" name="Clave" placeholder="Contraseña" id="clave" class="form-control" required />
+                                </div>
+
+                                <button type="submit" class="btn btn-danger"> Ingresar </button>
                                 <hr>
                                 <span class="text-center">¿No tienes una cuenta? <a href="./register.php" type="button" class=""> Registrate aquí</a></span>
                             </form>

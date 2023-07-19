@@ -15,25 +15,25 @@ function validateForm() {
 
     if (NombreCorreoValue == '') {
         alert('Por favor, ingresa tu nombre');
-        nameInput.focus();
+        NombreCorreo.focus();
         return false;
     }
 
     if (DirEmailValue == '') {
         alert('Por favor, ingresa tu correo electrónico');
-        emailInput.focus();
+        DireccionCorreo.focus();
         return false;
     }
 
     if (AsuntoValue == '') {
         alert('Por favor, ingresa un asunto');
-        passwordInput.focus();
+        AsuntoMail.focus();
         return false;
     }
 
     if (MensajeMailValue == '') {
         alert('Por favor, ingresa tu Mensaje');
-        passwordInput.focus();
+        MensajeMail.focus();
         return false;
     }
     // Si todo está bien, se envía el formulario
