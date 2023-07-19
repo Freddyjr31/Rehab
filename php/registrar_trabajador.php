@@ -25,12 +25,13 @@
     if ($resultado->num_rows > 0) {
         echo "El correo electrónico ya está registrado";
     } else {
-        echo $tipo;
         $sql1 = "INSERT INTO correos (nombre_correo, dominio_id) VALUES ('$correo', '$dominio');";
-        $idcorreo = $mysqli->query($sql1);
+        $mysqli->query($sql1);
+        $idcorreo = mysqli_insert_id($mysqli);
 
         $sql2 = "INSERT INTO telefonos (numero, cod_id) VALUES ('$telefono', '$codigo_area');";
-        $idtelefono = $mysqli->query($sql2);
+        $mysqli->query($sql2);
+        $idtelefono = mysqli_insert_id($mysqli);
 
         $sql = "INSERT INTO usuarios (nombre, apellido, correo, Clave, id_telefono, sexo, cedula, rol_id, id_estatus_usuario) VALUES ('$nombre', '$apellido', '$idcorreo', '$password', '$idtelefono', '$sexo', '$cedula', '$tipo',1)";
         if ($mysqli->query($sql) === TRUE) {

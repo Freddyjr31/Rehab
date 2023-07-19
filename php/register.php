@@ -1,3 +1,16 @@
+<?php
+
+    include('conexionbd.php');
+
+    $sql5 = "SELECT * FROM dominios";
+    $dominios = $mysqli->query($sql5);
+
+    $sql6 = "SELECT * FROM cod_area";
+    $cod_area = $mysqli->query($sql6);
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +49,7 @@
                 <div class="col mb-3">
                     <div class="card border-0 h-100 p-3 shadow CardLogin">
                         <div class="card-body">
-                        <form class="row g-4" action="Iniciarsesion.php" method="post" id="FormCrearUsuario">
+                            <form class="row g-4" action="registrar_cliente.php" method="post" id="FormCrearUsuario">
                                 <?php
                                 if (isset($_GET['error'])) {
                                 ?>
@@ -72,27 +85,33 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Correo * </label>
-                                    <input required type="email" name="correo" placeholder="" id="correo" class="form-control" />
+                                    <input required type="text" name="correo" placeholder="" id="correo" class="form-control" />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Dominio * </label>
                                     <select required class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
-                                        <option selected>... </option>
-                                        <option value="g">@gmail.com</option>
-                                        <option value="h">@hotmail.com</option>
-                                        <option value="y">@yahoo.com</option>
+                                        <?php
+                                            if ($dominios->num_rows > 0) {
+                                                while ($fila4 = $dominios->fetch_assoc()) {
+                                                    echo '<option value="' . $fila4['id_dominio'] . '">' . $fila4['nombre_dominio'] . '</option>';
+                                                }
+                                            }
+                                        ?>
                                     </select>
                                 </div>
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Código de área * </label>
-                                    <select required class="form-select" aria-label="Default select example" name="Codigo" placeholder="" id="Codigo">
+                                    <select required class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="Codigo">
                                         <option selected>... </option>
-                                        <option value="MoV14">0414</option>
-                                        <option value="Mov24">0424</option>
-                                        <option value="Mov16">0416</option>
-                                        <option value="Mov26">0426</option>
-                                        <option value="Dig12">0412</option>
+                                        <?php
+                                            if ($cod_area->num_rows > 0) {
+                                                while ($fila5 = $cod_area->fetch_assoc()) {
+                                                    echo '<option value="' . $fila5['id_cod'] . '">' . $fila5['area'] . '</option>';
+                                                }
+                                            }
+
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-md-6">

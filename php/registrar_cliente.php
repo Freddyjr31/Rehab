@@ -10,20 +10,30 @@
 
     $nombre = validate($_POST['nombre']); 
     $apellido = validate($_POST['apellido']);
-    $correo = validate($_POST['correo']);
-    $telefono = validate($_POST['telefono']);
     $sexo = validate($_POST['sexo']);
-    $password = validate($_POST['password']);
     $cedula = validate($_POST['cedula']);
+    $correo = validate($_POST['correo']);
+    $dominio = validate($_POST['dominio']);
+    $codigo_area = validate($_POST['codigo']);
+    $telefono = validate($_POST['telefono']);
+    $password = validate($_POST['password']);
 
-    $sql = "SELECT * FROM usuarios WHERE correo_usuario='$correo'";
+    $sql = "SELECT * FROM correos INNER JOIN dominios ON id_dominio = correos.dominio_id WHERE correos.nombre_correo='$correo' AND dominios.id_dominio = '$dominio'";
     $resultado = $mysqli->query($sql);
 
     if ($resultado->num_rows > 0) {
         echo "El correo electrónico ya está registrado";
     } else {
-    
-        $sql = "INSERT INTO usuarios (nombre, apellido, correo_usuario, Clave, telefono, sexo, cedula, rol_id, id_estatus_usuario) VALUES ('$nombre', '$apellido', '$correo', '$password', '$telefono', '$sexo', '$cedula', 2,1)";
+        
+        $sql1 = "INSERT INTO correos (nombre_correo, dominio_id) VALUES ('$correo', '$dominio');";
+        $mysqli->query($sql1);
+        $idcorreo = mysqli_insert_id($mysqli);
+
+        $sql2 = "INSERT INTO telefonos (numero, cod_id) VALUES ('$telefono', '$codigo_area');";
+        $mysqli->query($sql2);
+        $idtelefono = mysqli_insert_id($mysqli);
+
+        $sql = "INSERT INTO usuarios (nombre, apellido, correo, Clave, id_telefono, sexo, cedula, rol_id, id_estatus_usuario) VALUES ('$nombre', '$apellido', '$idcorreo', '$password', '$idtelefono', '$sexo', '$cedula',2,1)";
         if ($mysqli->query($sql) === TRUE) {
             echo "Usuario registrado correctamente";
             header('Location: consulta.php');

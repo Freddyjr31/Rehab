@@ -1,3 +1,21 @@
+<?php
+
+    session_start();
+
+    if (($_SESSION['usuario']) == NULL) {
+        header('Location: consulta.php');
+    }
+
+    include('conexionbd.php');
+    $id = $_SESSION['id'];
+
+    $sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_trabajador = '$id' AND id_estatus = 1";
+    $pendientes = $mysqli->query($sql);
+
+    $sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
+    $usuario = $mysqli->query($sql2);
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -36,9 +54,9 @@
                 <h2>[Nombre] [Apellido]</h2>
             </div>
             <!-- boton de cerrar cesion -->
-            <div class="col d-flex justify-content-end">
-                <button class="btn btn-danger">Cerrar sesión</button>
-            </div>
+            <form action="CerrarSesion.php" method="POST" class="col d-flex justify-content-end">
+                <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+            </form>
 
         </div>
         <hr>
@@ -58,37 +76,51 @@
                         <hr>
                         <!-- CONSULTAR CITAS PENDIENTES -->
                         <div class="row row-cols-1 row-cols-md-2 g-3">
-                            <div class="col-md">
-                                <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
-                                    <div class="card-body">
-                                        <div class="row g-4">
-                                            <div class="col-sm-6">
-                                                <p><b>Servicio :</b> nbfdsfn </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                 <p><b>Especialista :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Fecha y Hora :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Estatus : </b><span class="badge rounded-pill text-bg-warning"> pendiente </span></p>
-                                            </div>
-                                            <form class="row g-3" action="">
-                                                <div class="col-sm-6">
-                                                    <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
-                                                        <option selected>Cambiar Estatus </option>
-                                                        <option value="1">estatus 1</option>
-                                                    </select>
+                        <?php
+
+                            if ($pendientes->num_rows > 0) {
+                                while ($fila = $pendientes->fetch_assoc()) {
+
+                                    if ($fila['id_estatus'] == 1){
+                                        $clase = "badge rounded-pill text-bg-warning";
+                                        $estatus = "Pendiente";
+                                    }elseif ($fila['id_estatus'] == 2){
+                                        $clase = "badge rounded-pill text-bg-info";
+                                        $estatus = "Confirmada";
+                                    }elseif ($fila['id_estatus'] == 3){
+                                        $clase = "badge rounded-pill text-bg-danger";
+                                        $estatus = "Rechazada";
+                                    }elseif ($fila['id_estatus'] == 4){
+                                        $clase = "badge rounded-pill text-bg-success";
+                                        $estatus = "Completada";
+                                    }
+
+                                    echo '<div class="col-md">
+                                            <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
+                                                <div class="card-body">
+                                                    <div class="row g-4">
+                                                        <div class="col-sm-6">
+                                                            <p><b>Servicio: </b>' . $fila['nombre_servicio'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Especialista: </b>' . $fila['nombre'] . ' ' . $fila['apellido'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Fecha y Hora: </b>' . $fila['fecha'] . ' ' . $fila['hora'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Estatus: </b><span class="'. $clase .'">' . $estatus . '</span></p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <button type="submit" class="btn btn-primary">Actualizar estatus</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            </div>
+                                        </div>';
+                                }
+                            } else {
+                                echo "No existen citas";
+                            }
+
+                        ?>
                         </div>
                     </div>
 
@@ -215,24 +247,35 @@
                         <!-- VER DATOS DEL PERFIL LOGUEADO -->
                         <hr>
                         <div class="row g-5 mt-3 mb-5">
-                            <div class="col-sm-4">
-                                <p class="text-capitalize"><b>Nombre :</b> fdafad</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-capitalize"><b>Apellido :</b> dfadf</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-capitalize"><b>Cédula :</b> adfdf</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-capitalize"><b>Correo :</b> fadsfasdf</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-capitalize"><b>Teléfono :</b> dsafasdf</p>
-                            </div>
-                            <div class="col-sm-4">
-                                <p class="text-capitalize"><b>Sexo :</b> dsafd</p>
-                            </div>
+                        <?php
+                                if ($usuario->num_rows > 0) {
+                                        while ($fila2 = $usuario->fetch_assoc()) {
+                                            if ($fila2['sexo'] == 'M'){
+                                                $sexo = "Masculino";
+                                            }elseif($fila2['sexo'] == 'F'){
+                                                $sexo = "Femenino";
+                                            }
+                                            echo '<div class="col-sm-4">
+                                                    <p class="text-capitalize"><b>Nombre: </b>' . $fila2['nombre'] . '</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="text-capitalize"><b>Apellido: </b>' . $fila2['apellido'] . '</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="text-capitalize"><b>Cédula: </b>' . $fila2['cedula'] . '</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p><b>Correo: </b>' . $fila2['nombre_correo'] . $fila2['nombre_dominio'] .'</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p><b>Teléfono: </b>' . $fila2['area'] . $fila2['numero'] .'</p>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <p class="text-capitalize"><b>Sexo: </b>' . $sexo .'</p>
+                                                </div>';
+                                        }
+                                    }
+                            ?>
                         </div>
                     </div>
                 </div>

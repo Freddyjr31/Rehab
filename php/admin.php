@@ -1,6 +1,6 @@
 <?php
 
- session_start();
+    session_start();
 
     if (($_SESSION['usuario']) == NULL) {
         header('Location: consulta.php');
@@ -8,7 +8,7 @@
 
     include('conexionbd.php');
 
-    $sql = "SELECT usuarios.*, roles.rol AS nombre_rol, estatus_usuario.estatus_usuario AS estatus FROM usuarios JOIN roles ON usuarios.rol_id = roles.id JOIN estatus_usuario ON usuarios.id_estatus_usuario = estatus_usuario.id";
+    $sql = "SELECT usuarios.*, roles.rol AS nombre_rol, estatus_usuario.estatus_usuario AS estatus, correos.*, telefonos.*, dominios.*, cod_area.* FROM usuarios JOIN roles ON usuarios.rol_id = roles.id JOIN estatus_usuario ON usuarios.id_estatus_usuario = estatus_usuario.id JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod";
     $resultado = $mysqli->query($sql);
 
     // $sql2 = "SELECT citas.*, estatus_cita.estatus AS cita_estatus, servicios.nombre_servicio AS servicio, usuarios.* FROM citas JOIN estatus_cita ON citas.id_estatus = estatus_cita.id JOIN servicios ON citas.id_servicio = servicios.id";
@@ -118,12 +118,11 @@
                                     <label for="" class="form-label">Dominio * </label>
                                     <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
                                         <?php
-                                        if ($dominios->num_rows > 0) {
-                                            while ($fila4 = $dominios->fetch_assoc()) {
-                                                echo '<option value="' . $fila4['id_dominio'] . '">' . $fila4['nombre_dominio'] . '</option>';
+                                            if ($dominios->num_rows > 0) {
+                                                while ($fila4 = $dominios->fetch_assoc()) {
+                                                    echo '<option value="' . $fila4['id_dominio'] . '">' . $fila4['nombre_dominio'] . '</option>';
+                                                }
                                             }
-                                        }
-
                                         ?>
                                     </select>
                                 </div>
@@ -220,9 +219,9 @@
                                                         <th scope='row'>1</th>
                                                         <td>" . $fila["nombre"] . "</td>
                                                         <td>" . $fila["apellido"] . "</td>
-                                                        <td>" . $fila["correo"] . "</td>
+                                                        <td>" . $fila["nombre_correo"] . $fila["nombre_dominio"] . "</td>
                                                         <td>" . $fila["cedula"] . "</td>
-                                                        <td>" . $fila["id_telefono"] . "</td>
+                                                        <td>" . $fila["area"] . $fila["numero"] . "</td>
                                                         <td>" . $fila["estatus"] . "</td>
                                                         <td>" . $fila["nombre_rol"] . "</td>
                                                         <td>
