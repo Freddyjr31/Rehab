@@ -172,11 +172,7 @@
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Tipo de usuario * </label>
-<<<<<<< HEAD
-                                    <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo">
-=======
                                     <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" required>
->>>>>>> 03daf662ac0d382e541dadb60d91dccb8737a17e
                                         <option selected>... </option>
                                         <?php
                                         if ($roles->num_rows > 0) {
