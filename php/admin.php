@@ -1,4 +1,5 @@
 <?php
+
  session_start();
 
     if (($_SESSION['usuario']) == NULL) {
@@ -171,7 +172,11 @@
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Tipo de usuario * </label>
+<<<<<<< HEAD
                                     <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo">
+=======
+                                    <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" required>
+>>>>>>> 03daf662ac0d382e541dadb60d91dccb8737a17e
                                         <option selected>... </option>
                                         <?php
                                         if ($roles->num_rows > 0) {
@@ -183,54 +188,13 @@
                                         ?>
                                     </select>
                                 </div>
-                                <!-- 
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Código de área * </label>
-                                    <select required class="form-select" aria-label="Default select example" name="CodA" placeholder="" id="CodA">
-                                        <option selected>... </option>
-                                        <option value="MoV14">0414</option>
-                                        <option value="Mov24">0424</option>
-                                        <option value="Mov16">0416</option>
-                                        <option value="Mov26">0426</option>
-                                        <option value="Dig12">0412</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">telefono * </label>
-                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" required/>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Código de área</label>
-                                    <select class="form-select" aria-label="Default select example" name="CodigoOPC" placeholder="" id="CodigoOPC">
-                                        <option selected>... </option>
-                                        <option value="MoV14">0414</option>
-                                        <option value="Mov24">0424</option>
-                                        <option value="Mov16">0416</option>
-                                        <option value="Mov26">0426</option>
-                                        <option value="Dig12">0412</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">télefono </label>
-                                    <input type="text" name="telefonoOPC" placeholder="" id="telefonoOPC" class="form-control"/>
-                                </div>
-
-                                <div class="col-md-12">
-                                    <label for="" class="form-label">tipo de usuario * </label>
-                                    <select class="form-select" aria-label="Default select example" name="TipoUser" placeholder="" id="TipoUser" required>
-                                        <option selected>... </option>
-                                        <option value="C">cliente</option>
-                                        <option value="T">trabajador</option>
-                                    </select>
-                                </div>
-                                    -->
+                                
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
                                     <input type="password" name="password" placeholder="" id="password" class="form-control" />
                                 </div>
-                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateForm();">Crear usuario</button>
+                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormCrearUsuario();">Crear usuario</button>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
