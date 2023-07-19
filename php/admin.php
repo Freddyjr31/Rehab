@@ -172,11 +172,7 @@
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Tipo de usuario * </label>
-<<<<<<< HEAD
-                                    <select class="form-select" aria-label="Default select example" name="tipo" placeholder="" id="tipo">
-=======
                                     <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" required>
->>>>>>> 03daf662ac0d382e541dadb60d91dccb8737a17e
                                         <option selected>... </option>
                                         <?php
                                         if ($roles->num_rows > 0) {
@@ -224,11 +220,11 @@
                                                         <th scope='row'>1</th>
                                                         <td>" . $fila["nombre"] . "</td>
                                                         <td>" . $fila["apellido"] . "</td>
-                                                        <td>" . $fila["correo_usuario"] . "</td>
+                                                        <td>" . $fila["correo"] . "</td>
                                                         <td>" . $fila["cedula"] . "</td>
-                                                        <td>" . $fila["telefono"] . "</td>
-                                                        <td>" . $fila["nombre_rol"] . "</td>
+                                                        <td>" . $fila["id_telefono"] . "</td>
                                                         <td>" . $fila["estatus"] . "</td>
+                                                        <td>" . $fila["nombre_rol"] . "</td>
                                                         <td>
                                                             <button type='submit' id='cambiar-estatus' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>Cambiar Estatus</button>
                                                         </td>
