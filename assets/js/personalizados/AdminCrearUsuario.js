@@ -12,7 +12,7 @@ const telefono2 = document.querySelector('#telefono2');
 const tipo = document.querySelector('#tipo');
 const password = document.querySelector('#password');
 
-function validateForm() {
+function validateFormCrearUsuario() {
    // event.preventDefault(); // Evita que el formulario se envíe
 
     const NombreValue = nombre.value.trim();
@@ -27,7 +27,8 @@ function validateForm() {
     const TelefonoDosValue = telefono2.value.trim();
     const TipoUsuarioValue = tipo.value.trim();
     const ContrasenaValue = password.value.trim();
-    //console.log(MensajeMailValue)
+    console.log(TipoUsuarioValue)
+    alert(TipoUsuarioValue)
 
     if (NombreValue == '') {
         alert('Por favor, ingrese el nombre del usuario');
