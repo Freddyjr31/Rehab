@@ -58,10 +58,10 @@
         <div class="row mx-0 my-0">
             <div class="col-md-8 imgContentBox">
                 <div id="ContentImgOrder1" class="col ContentImg">
-                    <img src="./img/fisioterapia.jpg" class="shadow rounded" alt="...">
+                    <img src="./img/masaje5.jpg" class="shadow rounded" alt="...">
                 </div>
                 <div id="ContentImgOrder2" class="col ContentImg">
-                    <img src="./img/terapia-ocupacional-850.jpg" class="shadow rounded" alt="...">
+                    <img src="./img/masaje6.jpg" id="ImgCenter" class="shadow rounded" alt="...">
                 </div>
                 <div id="ContentImgOrder3" class="col ContentImg">
                     <img src="./img/personas-alta-fisioterapia-mantenerse-saludables.jpg" class="shadow rounded" alt="...">
@@ -71,8 +71,10 @@
                 <h2>Calidad garantizada en todos nuestros servicios</h2>
                 <hr>
                 <p class="text-sm fw-light TextAlign">Somos una empresa dedicada a la prestación de servicios de rehabilitación, enfermería, belleza, estética corporal y facial, su necesidad actual está centrada en mejorar la gestión de sus servicios y facilitar de esta manera la comunicación con sus clientes.</p>
-                <a href="./html/servicios.html" type="button" class="btn btn-danger">servicios</a>
-                <img src="./img/terapia-ocupacional-uc-admisionIMG_3.jpg" class="img-fluid shadow imgContent mt-5">
+                <div class="col-sm-12">
+                <a href="./html/servicios.html" type="button" class="btn btn-danger">servicios</a>    
+                </div>
+                <!--<img src="./img/masaje2.jpg" class="img-fluid shadow ImgCalidadGarantizada mt-5">-->
             </div>
         </div>
     </div>
@@ -115,7 +117,7 @@
     <div class="container-fluid my-5 mx-0">
         <div class="row p-0 m-0">
             <div class="col-md-7 ps-5">
-                <img src="./img/Kinesio_Neuro_Main-768x768.jpg" class="img-fluid shadow imgContent" alt="...">
+                <img src="./img/masaje3.jpg" class="img-fluid shadow imgContent" alt="...">
             </div>
             <div class="col-md-5 mt-5 bg-light">
                 <h1 class="h1 p-2 mt-5">Quíenes somos</h1>
