@@ -51,7 +51,7 @@
     <div class="container-sm mt-5">
         <div class="row d-flex justify-content-between">
             <div class="col">
-                <h2>[Nombre] [Apellido]</h2>
+                <h2><?php echo $_SESSION['nombre'] . " " .$_SESSION['apellido']; ?></h2>
             </div>
             <!-- boton de cerrar cesion -->
             <form action="CerrarSesion.php" method="POST" class="col d-flex justify-content-end">
