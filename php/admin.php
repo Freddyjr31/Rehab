@@ -86,7 +86,7 @@
                             <h3 class="mt-3">Crear usuarios</h3>
                             <hr>
                             <!-- USUARIOS PENDIENTES POR VALIDAR -->
-                            <form class="row g-4" action="" method="post">
+                            <form class="row g-4" action="" method="post" id="FormCrearUsuarioAdmin">
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Nombre * </label>
                                     <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" required />
@@ -231,7 +231,7 @@
                                     <label for="" class="form-label">Contraseña * </label>
                                     <input type="password" name="password" placeholder="" id="password" class="form-control" required />
                                 </div>
-                                <button type="submit" class="btn btn-group-sm btn-danger mt-3">Crear usuario</button>
+                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateForm();">Crear usuario</button>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
@@ -372,7 +372,7 @@
             <div class="row p-2 justify-content-center">
                 <div class="col-md-4 p-2">
                     <label for=""></label>
-                    <p class="text-justify text-sm text-break fw-light text-center">
+                    <p class="text-sm text-break fw-light TextAlign">
                         Somos una empresa dedicada a la prestación de servicios de
                         rehabilitación, enfermería, belleza, estética corporal y facial, su
                         necesidad actual está centrada en mejorar la gestión de sus
@@ -386,7 +386,7 @@
                     <div class="col-md m-2">
                         <div class="input-group flex-nowrap mb-2">
                             <img class="Icons" src="../img/icons/icons8-find-clinic-48.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="" />
-                            <span class="text-sm text-break fw-light text-center">
+                            <span class="text-sm fw-light TextAlign">
                                 Parroquia Los Teques, Jurisdicción del Municipio Guaicaipuro,
                                 del Estado Bolivariano de Miranda, Ciudad de Los Teques,
                                 Final Av. Bolivar.
@@ -401,17 +401,7 @@
                         <div class="input-group mb-2 d-flex justify-content-center">
                             <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
                             <span class="text-sm text-break fw-light text-center">
-                                +58 412-000-0257</span>
-                        </div>
-                        <div class="input-group mb-2 d-flex justify-content-center">
-                            <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                            <span class="text-sm text-break fw-light text-center">
-                                +58 412-000-0258</span>
-                        </div>
-                        <div class="input-group mb-2 d-flex justify-content-center">
-                            <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                            <span class="text-sm text-break fw-light text-center">
-                                +58 412-000-0259</span>
+                                +58 412-020-8921</span>
                         </div>
                     </div>
                 </div>

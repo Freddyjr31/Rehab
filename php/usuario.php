@@ -157,16 +157,16 @@
                         <h3 class="mt-3">Agendar citas </h3>
                         <hr>
                         <!-- FORMULARIO PARA AGENDAR CITAS -->
-                        <form class="row g-4 mt-2">
+                        <form class="row g-4 mt-2" action="" id="FormAgendarCitas">
                             <div class="col-sm-6">
-                                <label for="" class="form-label">Servicio : </label>
+                                <label for="" class="form-label">Servicio * </label>
                                 <select class="form-select" aria-label="Default select example" name="servicio" placeholder="" id="servicio" required>
                                     <option selected>... </option>
                                     <option value="1">servicio 1</option>
                                 </select>
                             </div>
                             <div class="col-sm-6">
-                                <label for="" class="form-label">Especialista :</label>
+                                <label for="" class="form-label">Especialista *</label>
                                 <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
                                     <option selected>... </option>
                                     <option value="1">Nombre 1</option>
@@ -174,33 +174,33 @@
                             </div>
                             <!-- fecha uno --> 
                             <div class="col-sm-6">
-                                <label class="form-label">Fecha tentatia 1: </label>
-                                <input class="form-control" type="date" name="fechaCita" min="2023-07-15" max="2030-12-31" required />
+                                <label class="form-label">Fecha * </label>
+                                <input class="form-control" type="date" name="fechaCita" id="fechaCita" min="2023-07-15" max="2030-12-31" required />
                             </div>
                             <div class="col-sm-6">
-                                <label class="form-label">Hora :</label>
+                                <label class="form-label">Hora *</label>
                                 <input class="form-control" id="horaCita" type="time" name="horaCita" required />
                             </div>
                             <!-- fecha dos --> 
                             <div class="col-sm-6">
-                                <label class="form-label">Fecha tentatia 2: </label>
-                                <input class="form-control" type="date" name="fechaCita" min="2023-07-15" max="2030-12-31" required />
+                                <label class="form-label">Fecha tentativa 2: </label>
+                                <input class="form-control" type="date" name="fechaCita2" id="fechaCita2" min="2023-07-15" max="2030-12-31" required />
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Hora :</label>
-                                <input class="form-control" id="horaCita" type="time" name="horaCita" required />
+                                <input class="form-control" id="horaCita2" type="time" name="horaCita2" required />
                             </div>
                             <!-- fecha tres --> 
                             <div class="col-sm-6">
-                                <label class="form-label">Fecha tentatia 3: </label>
-                                <input class="form-control" type="date" name="fechaCita" min="2023-07-15" max="2030-12-31" required />
+                                <label class="form-label">Fecha tentativa 3: </label>
+                                <input class="form-control" type="date" name="fechaCita3" name="fechaCita3" min="2023-07-15" max="2030-12-31" required />
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Hora :</label>
-                                <input class="form-control" id="horaCita" type="time" name="horaCita" required />
+                                <input class="form-control" id="horaCita3" type="time" name="horaCita3" required />
                             </div>
                             <div class="col-sm-12">
-                                <button type="submit" class="btn btn-group-sm btn-danger mt-3">Agendar</button>
+                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="ValidarFormCita();">Agendar</button>
                             </div>
                         </form>
 
@@ -249,67 +249,58 @@
     </section>
 
     <footer class="p-3">
-        <div class="row p-2 justify-content-center">
-            <div class="col-md-4 p-2">
-                <label for=""></label>
-                <p class="text-justify text-sm text-break fw-light text-center">
-                    Somos una empresa dedicada a la prestación de servicios de
-                    rehabilitación, enfermería, belleza, estética corporal y facial, su
-                    necesidad actual está centrada en mejorar la gestión de sus
-                    servicios y facilitar de esta manera la comunicación con sus
-                    clientes.
-                </p>
-            </div>
+            <div class="row p-2 justify-content-center">
+                <div class="col-md-4 p-2">
+                    <label for=""></label>
+                    <p class="text-sm text-break fw-light TextAlign">
+                        Somos una empresa dedicada a la prestación de servicios de
+                        rehabilitación, enfermería, belleza, estética corporal y facial, su
+                        necesidad actual está centrada en mejorar la gestión de sus
+                        servicios y facilitar de esta manera la comunicación con sus
+                        clientes.
+                    </p>
+                </div>
 
-            <div class="col-md-4 p-2">
-                <h6 class="text-center">Ubicación</h6>
-                <div class="col-md m-2">
-                    <div class="input-group flex-nowrap mb-2">
-                        <img class="Icons" src="../img/icons/icons8-find-clinic-48.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            Parroquia Los Teques, Jurisdicción del Municipio Guaicaipuro,
-                            del Estado Bolivariano de Miranda, Ciudad de Los Teques,
-                            Final Av. Bolivar.
-                        </span>
+                <div class="col-md-4 p-2">
+                    <h6 class="text-center">Ubicación</h6>
+                    <div class="col-md m-2">
+                        <div class="input-group flex-nowrap mb-2">
+                            <img class="Icons" src="../img/icons/icons8-find-clinic-48.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="" />
+                            <span class="text-sm fw-light TextAlign">
+                                Parroquia Los Teques, Jurisdicción del Municipio Guaicaipuro,
+                                del Estado Bolivariano de Miranda, Ciudad de Los Teques,
+                                Final Av. Bolivar.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-2">
+                    <h6 class="text-center">Teléfonos</h6>
+                    <div class="col m-2">
+                        <div class="input-group mb-2 d-flex justify-content-center">
+                            <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                            <span class="text-sm text-break fw-light text-center">
+                                +58 412-020-8921</span>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4 p-2">
-                <h6 class="text-center">Teléfonos</h6>
-                <div class="col m-2">
-                    <div class="input-group mb-2 d-flex justify-content-center">
-                        <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            +58 412-000-0257</span>
-                    </div>
-                    <div class="input-group mb-2 d-flex justify-content-center">
-                        <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            +58 412-000-0258</span>
-                    </div>
-                    <div class="input-group mb-2 d-flex justify-content-center">
-                        <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            +58 412-000-0259</span>
-                    </div>
+            <div class="row border-top border-secondary-subtle p-2 justify-content-center">
+                <div class="col-md p-2">
+                    <label for=""></label>
+                    <p class="text-justify text-sm text-break fw-light text-center">
+                        © 2023 Inversiones Rehab Salud y Belleza
+                    </p>
                 </div>
             </div>
-        </div>
-        <div class="row border-top border-secondary-subtle p-2 justify-content-center">
-            <div class="col-md p-2">
-                <label for=""></label>
-                <p class="text-justify text-sm text-break fw-light text-center">
-                    © 2023 Inversiones Rehab Salud y Belleza
-                </p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/popper.js"></script>
+    <script src="../assets/js/personalizados/FornularioCitas.js" component={}/>"></script>
 </body>
 
 </html>

@@ -254,62 +254,52 @@
     </section>
 
     <footer class="p-3">
-        <div class="row p-2 justify-content-center">
-            <div class="col-md-4 p-2">
-                <label for=""></label>
-                <p class="text-justify text-sm text-break fw-light text-center">
-                    Somos una empresa dedicada a la prestación de servicios de
-                    rehabilitación, enfermería, belleza, estética corporal y facial, su
-                    necesidad actual está centrada en mejorar la gestión de sus
-                    servicios y facilitar de esta manera la comunicación con sus
-                    clientes.
-                </p>
-            </div>
+            <div class="row p-2 justify-content-center">
+                <div class="col-md-4 p-2">
+                    <label for=""></label>
+                    <p class="text-sm text-break fw-light TextAlign">
+                        Somos una empresa dedicada a la prestación de servicios de
+                        rehabilitación, enfermería, belleza, estética corporal y facial, su
+                        necesidad actual está centrada en mejorar la gestión de sus
+                        servicios y facilitar de esta manera la comunicación con sus
+                        clientes.
+                    </p>
+                </div>
 
-            <div class="col-md-4 p-2">
-                <h6 class="text-center">Ubicación</h6>
-                <div class="col-md m-2">
-                    <div class="input-group flex-nowrap mb-2">
-                        <img class="Icons" src="../img/icons/icons8-find-clinic-48.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            Parroquia Los Teques, Jurisdicción del Municipio Guaicaipuro,
-                            del Estado Bolivariano de Miranda, Ciudad de Los Teques,
-                            Final Av. Bolivar.
-                        </span>
+                <div class="col-md-4 p-2">
+                    <h6 class="text-center">Ubicación</h6>
+                    <div class="col-md m-2">
+                        <div class="input-group flex-nowrap mb-2">
+                            <img class="Icons" src="../img/icons/icons8-find-clinic-48.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="" />
+                            <span class="text-sm fw-light TextAlign">
+                                Parroquia Los Teques, Jurisdicción del Municipio Guaicaipuro,
+                                del Estado Bolivariano de Miranda, Ciudad de Los Teques,
+                                Final Av. Bolivar.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-2">
+                    <h6 class="text-center">Teléfonos</h6>
+                    <div class="col m-2">
+                        <div class="input-group mb-2 d-flex justify-content-center">
+                            <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                            <span class="text-sm text-break fw-light text-center">
+                                +58 412-020-8921</span>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4 p-2">
-                <h6 class="text-center">Teléfonos</h6>
-                <div class="col m-2">
-                    <div class="input-group mb-2 d-flex justify-content-center">
-                        <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            +58 412-000-0257</span>
-                    </div>
-                    <div class="input-group mb-2 d-flex justify-content-center">
-                        <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            +58 412-000-0258</span>
-                    </div>
-                    <div class="input-group mb-2 d-flex justify-content-center">
-                        <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                        <span class="text-sm text-break fw-light text-center">
-                            +58 412-000-0259</span>
-                    </div>
+            <div class="row border-top border-secondary-subtle p-2 justify-content-center">
+                <div class="col-md p-2">
+                    <label for=""></label>
+                    <p class="text-justify text-sm text-break fw-light text-center">
+                        © 2023 Inversiones Rehab Salud y Belleza
+                    </p>
                 </div>
             </div>
-        </div>
-        <div class="row border-top border-secondary-subtle p-2 justify-content-center">
-            <div class="col-md p-2">
-                <label for=""></label>
-                <p class="text-justify text-sm text-break fw-light text-center">
-                    © 2023 Inversiones Rehab Salud y Belleza
-                </p>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap.js"></script>
