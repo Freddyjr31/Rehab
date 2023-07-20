@@ -27,6 +27,9 @@ $dominios = $mysqli->query($sql5);
 $sql6 = "SELECT * FROM cod_area";
 $cod_area = $mysqli->query($sql6);
 
+$sql7 = "SELECT * FROM servicios";
+$servicios = $mysqli->query($sql7);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,7 +38,7 @@ $cod_area = $mysqli->query($sql6);
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Inversiones Rehab</title>
-    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
+    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='../css/styles.css'>
     <link rel='stylesheet' href='../css/home.css'>
@@ -147,7 +150,7 @@ $cod_area = $mysqli->query($sql6);
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Telefono * </label>
-                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" required/>
+                                    <input type="number" name="telefono" placeholder="" id="telefono" class="form-control" required />
                                 </div>
 
                                 <!-- telefono opcional -->
@@ -173,7 +176,7 @@ $cod_area = $mysqli->query($sql6);
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Tipo de usuario * </label>
-                                    <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" required>
+                                    <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" onclick="MostrarEspecialidades();" required>
                                         <option value="" selected>... </option>
                                         <?php
                                         if ($roles->num_rows > 0) {
@@ -186,10 +189,27 @@ $cod_area = $mysqli->query($sql6);
                                     </select>
                                 </div>
 
+                                <div class="col-md-12" id="especialidades" style="display:none">
+                                    <label for="">Especialidades *</label>
+                                    <div class="row row-cols-sm-2 row-cols-md-2 mt-2">
+
+                                        <?php
+                                        if ($servicios->num_rows > 0) {
+                                            while ($fila4 = $servicios->fetch_assoc()) {
+                                                echo '<div class="col p-1">
+                                                      <input class="form-check-input" type="checkbox" value="' . $fila4['id'] . '" id="firstCheckbox">
+                                                      <small><label class="form-check-label text-sm text-break" for="firstCheckbox">' . $fila4['nombre_servicio'] . '</label></small>
+                                                     </div>';
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required/>
+                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required />
                                 </div>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormCrearUsuario(event)">Crear usuario</button>
                             </form>

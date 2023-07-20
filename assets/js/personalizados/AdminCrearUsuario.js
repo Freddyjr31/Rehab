@@ -13,7 +13,7 @@ const tipo = document.querySelector('#tipo');
 const password = document.querySelector('#password');
 
 function validateFormCrearUsuario(event) {
-   event.preventDefault(); // Evita que el formulario se envíe
+    event.preventDefault(); // Evita que el formulario se envíe
 
     const NombreValue = nombre.value.trim();
     const ApellidoValue = apellido.value.trim();
@@ -65,7 +65,7 @@ function validateFormCrearUsuario(event) {
         cedula.focus();
         return false;
     }
-    
+
 
 
 
@@ -142,3 +142,16 @@ function validateFormCrearUsuario(event) {
 //alert("formulario validado")
 
 //FormCrearUsuario.addEventListener('submit', validateFormCrearUsuario);
+
+
+function MostrarEspecialidades() {
+    var especialidades = document.getElementById('especialidades');
+    const TipoUsuarioValueValid = tipo.value.trim();
+    /*console.log(TipoUsuarioValueValid)*/
+    if (TipoUsuarioValueValid == 3) {
+        especialidades.style.display = 'block';
+    } else {
+        especialidades.style.display = 'none';
+    }
+
+}
