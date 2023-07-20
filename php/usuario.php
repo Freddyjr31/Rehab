@@ -14,6 +14,12 @@ $resultado = $mysqli->query($sql);
 
 $sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
 $usuario = $mysqli->query($sql2);
+
+$sql3 = "SELECT * FROM servicios";
+$servicios = $mysqli->query($sql3);
+
+$sql4 = "SELECT * FROM usuarios WHERE rol_id = 3";
+$trabajador = $mysqli->query($sql4);
 ?>
 
 <!DOCTYPE html>
@@ -61,6 +67,30 @@ $usuario = $mysqli->query($sql2);
 
         </div>
         <hr>
+        <?php
+            if (isset($_GET['error'])) {
+        ?>
+        <p class="error">
+            <?php
+                echo $_GET['error']
+            ?>
+
+        </p>
+        <?php
+            }
+        ?>
+        <?php
+            if (isset($_GET['alert'])) {
+        ?>
+        <p class="notificacion">
+            <?php
+                echo $_GET['alert']
+            ?>
+
+        </p>
+        <?php
+            }
+        ?>
         <!-- Menu de usuario -->
         <div class="row mt-3 mb-5">
             <div class="d-flex align-items-start">
@@ -126,19 +156,31 @@ $usuario = $mysqli->query($sql2);
                         <h3 class="mt-3">Agendar citas </h3>
                         <hr>
                         <!-- FORMULARIO PARA AGENDAR CITAS -->
-                        <form class="row g-4 mt-2" action="" id="FormAgendarCitas">
+                        <form class="row g-4 mt-2" method="post" action="registrar_cita.php" id="FormAgendarCitas">
                             <div class="col-sm-6">
                                 <label for="" class="form-label">Servicio * </label>
                                 <select class="form-select" aria-label="Default select example" name="servicio" placeholder="" id="servicio" required>
                                     <option selected>... </option>
-                                    <option value="1">servicio 1</option>
+                                    <?php
+                                        if ($servicios->num_rows > 0) {
+                                            while ($fila3 = $servicios->fetch_assoc()) {
+                                                echo '<option value="' . $fila3['id'] . '">' . $fila3['nombre_servicio'] . '</option>';
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <div class="col-sm-6">
                                 <label for="" class="form-label">Especialista *</label>
                                 <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
                                     <option selected>... </option>
-                                    <option value="1">Nombre 1</option>
+                                    <?php
+                                        if ($trabajador->num_rows > 0) {
+                                            while ($fila4 = $trabajador->fetch_assoc()) {
+                                                echo '<option value="' . $fila4['id_usuarios'] . '">' . $fila4['nombre'] . $fila4['apellido'] .'</option>';
+                                            }
+                                        }
+                                    ?>
                                 </select>
                             </div>
                             <!-- fecha uno -->
@@ -153,8 +195,7 @@ $usuario = $mysqli->query($sql2);
                                     <option value="06:00">06:00</option>
                                     <option value="07:30">07:30</option>
                                     <option value="09:00">09:00</option>
-                                    <option value="10:30">10:30<
-                                    /option>
+                                    <option value="10:30">10:30</option>
                                     <option value="01:00">01:00</option>
                                     <option value="02:30">02:30</option>
                                 </select>

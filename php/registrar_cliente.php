@@ -1,4 +1,10 @@
 <?php
+
+    session_start();
+
+    if (($_SESSION['usuario']) == NULL) {
+        header('Location: consulta.php');
+    }
     include('conexionbd.php');
 
     function validate($data){

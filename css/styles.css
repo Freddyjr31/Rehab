@@ -252,6 +252,16 @@ form h1{
 
 }
 
+.notificacion{
+	background-color: #099b1c;
+	color:black;
+	padding: 10px;
+	width: 95%;
+	border-radius: 5px;
+	margin: 20px auto;
+
+}
+
 .box1{
 	width:400px;
 	height: 400px;

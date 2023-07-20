@@ -12,6 +12,9 @@ $id = $_SESSION['id'];
 $sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_trabajador = '$id' AND id_estatus = 1";
 $pendientes = $mysqli->query($sql);
 
+$sql1 = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_trabajador = '$id' AND id_estatus = 4";
+$completadas = $mysqli->query($sql1);
+
 $sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
 $usuario = $mysqli->query($sql2);
 ?>
@@ -81,21 +84,6 @@ $usuario = $mysqli->query($sql2);
 
                             if ($pendientes->num_rows > 0) {
                                 while ($fila = $pendientes->fetch_assoc()) {
-
-                                    if ($fila['id_estatus'] == 1) {
-                                        $clase = "badge rounded-pill text-bg-warning";
-                                        $estatus = "Pendiente";
-                                    } elseif ($fila['id_estatus'] == 2) {
-                                        $clase = "badge rounded-pill text-bg-info";
-                                        $estatus = "Confirmada";
-                                    } elseif ($fila['id_estatus'] == 3) {
-                                        $clase = "badge rounded-pill text-bg-danger";
-                                        $estatus = "Rechazada";
-                                    } elseif ($fila['id_estatus'] == 4) {
-                                        $clase = "badge rounded-pill text-bg-success";
-                                        $estatus = "Completada";
-                                    }
-
                                     echo '<div class="col-md">
                                             <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
                                                 <div class="card-body">
@@ -110,7 +98,7 @@ $usuario = $mysqli->query($sql2);
                                                             <p><b>Fecha y Hora: </b>' . $fila['fecha'] . ' ' . $fila['hora'] . '</p>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <p><b>Estatus: </b><span class="' . $clase . '">' . $estatus . '</span></p>
+                                                            <p><b>Estatus: </b><span class="badge rounded-pill text-bg-warning">Pendiente</span></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -170,37 +158,36 @@ $usuario = $mysqli->query($sql2);
                         <hr>
                         <!-- CONSULTAR CITAS COMPLETADAS -->
                         <div class="row row-cols-1 row-cols-md-2 g-3">
-                            <div class="col-md">
-                                <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
-                                    <div class="card-body">
-                                        <div class="row g-4">
-                                            <div class="col-sm-6">
-                                                <p><b>Servicio :</b> nbfdsfn </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Especialista :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Fecha y Hora :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Estatus :</b><span class="badge rounded-pill text-bg-success"> completada </span></p>
-                                            </div>
-                                            <form class="row g-3" action="">
-                                                <div class="col-sm-6">
-                                                    <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
-                                                        <option selected>Cambiar Estatus </option>
-                                                        <option value="1">estatus 1</option>
-                                                    </select>
+                            <?php
+
+                            if ($completadas->num_rows > 0) {
+                                while ($fila1 = $completadas->fetch_assoc()) {
+                                    echo '<div class="col-md">
+                                            <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
+                                                <div class="card-body">
+                                                    <div class="row g-4">
+                                                        <div class="col-sm-6">
+                                                            <p><b>Servicio: </b>' . $fila1['nombre_servicio'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Especialista: </b>' . $fila1['nombre'] . ' ' . $fila1['apellido'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Fecha y Hora: </b>' . $fila1['fecha'] . ' ' . $fila1['hora'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Estatus: </b><span class="badge rounded-pill text-bg-success">Completada</span></p>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-sm-6">
-                                                    <button type="submit" class="btn btn-primary">Actualizar estatus</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                            </div>
+                                        </div>';
+                                }
+                            } else {
+                                echo "No existen citas";
+                            }
+
+                            ?>
                         </div>
                     </div>
 
