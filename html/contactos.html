@@ -71,14 +71,33 @@
             </div>
             <div class="col-md-6">
               <input
+                placeholder="Nombre"
+                type="text"
+                class="form-control"
+                id="ApellidoCorreo"
+                name="ApellidoCorreo"
+                required
+              />
+            </div>
+            <div class="col-md-8">
+              <input
                 placeholder="Email"
-                type="email"
+                type="text"
                 class="form-control"
                 id="DireccionCorreo"
                 name="DireccionCorreo"
                 required
               />
             </div>
+            <div class="col-sm-4 p-0">
+              <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio" required>
+                  <option value="" selected>Dominio </option>
+                  <option value="@gmail.com">@gmail.com</option>
+                  <option value="@hotmail.com">@hotmail.com</option>
+                  <option value="@yahoo.com">@yahoo.com</option>
+              </select>
+          </div>
+
             <div class="col-sm-12">
               <label for="" class="form-label"></label>
               <input
@@ -102,7 +121,7 @@
               ></textarea>
             </div>
             <div class="col-sm-12">
-              <button onclick="validateForm()" type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
+              <button onclick="validateFormCONTACTOS(event);" type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
             </div>
           </form>
         </div>

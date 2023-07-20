@@ -2,14 +2,16 @@
 
   $nombre = $_POST['NombreCorreo'];
   $DireccionMail = $_POST['DireccionCorreo'];
+  $dominioLogin = $_POST['dominioLogin'];
   $asunto = $_POST['AsuntoMail'];
   $mensaje = $_POST['MensajeMail'];
 
-  echo $nombre." envio : ".$mensaje;
+  $CorreoUsuario = $DireccionMail.$dominioLogin;
+  echo $nombre." envio : ".$mensaje." desde: ".$CorreoUsuario;
 
   ini_set( 'display_errors', 1 );
     error_reporting( E_ALL );
-    $from = $DireccionMail;
+    $from = $CorreoUsuario;
     $to = "bernalfreddy6@gmail.com";
     $subject = $asunto;
     $message = $mensaje;
@@ -20,7 +22,7 @@
     }
     
 
-    header("Location: http://localhost/sistema/html/contactos.html")
+    header("Location: http://localhost/agendarCitas/Rehab/html/contactos.html")
 
-
+ 
 ?>
