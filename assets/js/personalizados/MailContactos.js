@@ -14,8 +14,9 @@ function validateFormCONTACTOS(event) {
     const AsuntoValue = AsuntoMail.value.trim();
     const MensajeMailValue = MensajeMail.value.trim();
 
-    const regex = /^[^()<>@,;:"[\]ç%&]*$/;
-    alert(DirEmailValue)
+    const regex = /^[^()<>@,;:"[\]ç%&]*$/
+    /*console.log(DirEmailValue)
+    alert(DirEmailValue)*/
     //console.log(MensajeMailValue)
 
     if (NombreCorreoValue == '') {
@@ -30,12 +31,10 @@ function validateFormCONTACTOS(event) {
         return false;
     }
 
-    if (regex.test(DirEmailValue)) {
-        alert('Por favor no ingresar @ en Email');
+    if (!regex.test(DirEmailValue)) {
+        alert('Por favor No ingresar @ en el campo Email');
         DireccionCorreo.focus();
         return false;
-    } else {
-        alert('Por favor no ingresar @ en Email');
     }
 
     if (dominioCorreoValue == '') {
