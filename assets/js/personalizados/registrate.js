@@ -52,6 +52,18 @@ function validateFormR(event) {
         return false;
     }
 
+    if (CedulaValue.length < 6) {
+        alert('Número de cédula incompleto');
+        cedula.focus();
+        return false;
+    }
+
+    if (CedulaValue.length > 8) {
+        alert('Número de cédula excede el limite');
+        cedula.focus();
+        return false;
+    }
+
     if (CorreoValue == '') {
         alert('Por favor, ingrese un correo');
         correo.focus();
@@ -72,6 +84,18 @@ function validateFormR(event) {
 
     if (TelefonoValue == '') {
         alert('Por favor, ingrese un número de telefono');
+        telefono.focus();
+        return false;
+    }
+
+    if (TelefonoValue.length < 7) {
+        alert('Número de telefono incompleto');
+        telefono.focus();
+        return false;
+    }
+
+    if (TelefonoValue.length > 7) {
+        alert('Número de télefono excede limite de caracteres');
         telefono.focus();
         return false;
     }
