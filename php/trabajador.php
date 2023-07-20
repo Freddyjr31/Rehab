@@ -100,6 +100,12 @@ $usuario = $mysqli->query($sql2);
                                                         <div class="col-sm-6">
                                                             <p><b>Estatus: </b><span class="badge rounded-pill text-bg-warning">Pendiente</span></p>
                                                         </div>
+                                                        <form class="row g-3" action="completar_cita.php" method="post">
+                                                            <div class="col-sm-6">
+                                                                <input class="form-control" type="text" name="idcita" id="idcita" style="display: none;" value="'. $fila['id_cita'] .'" required />
+                                                                <button type="submit" class="btn btn-success">Completar cita</button>
+                                                            </div>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div>

@@ -9,7 +9,7 @@ if (($_SESSION['usuario']) == NULL) {
 include('conexionbd.php');
 $id = $_SESSION['id'];
 
-$sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_cliente = '$id'";
+$sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_cliente = '$id' AND NOT id_estatus = 5";
 $resultado = $mysqli->query($sql);
 
 $sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
@@ -140,8 +140,9 @@ $trabajador = $mysqli->query($sql4);
                                                             <div class="col-sm-6">
                                                                 <p><b>Estatus: </b><span class="' . $clase . '">' . $estatus . '</span></p>
                                                             </div>
-                                                            <form class="row g-3" action="">
+                                                            <form class="row g-3" action="cancelar_cita.php" method="post">
                                                                 <div class="col-sm-6">
+                                                                    <input class="form-control" type="text" name="idcita" id="idcita" style="display: none;" value="'. $fila['id_cita'] .'" required />
                                                                     <button type="submit" class="btn btn-danger">Cancelar cita</button>
                                                                 </div>
                                                             </form>

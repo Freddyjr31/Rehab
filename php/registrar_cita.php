@@ -19,7 +19,7 @@
     $fecha = validate($_POST['fechaCita']);
     $hora = validate($_POST['horaCita']);
 
-    $sql = "SELECT * FROM citas WHERE fecha='$fecha' AND hora = '$hora' AND id_trabajador = '$especialista'";
+    $sql = "SELECT * FROM citas WHERE fecha='$fecha' AND hora = '$hora' AND id_trabajador = '$especialista' AND NOT id_estatus = 5";
     $resultado = $mysqli->query($sql);
 
     $sql1 = "SELECT * FROM especialidades WHERE usuario_id='$especialista' AND servicio_id = '$servicio'";
