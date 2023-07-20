@@ -2,7 +2,7 @@
 
   $nombre = $_POST['NombreCorreo'];
   $DireccionMail = $_POST['DireccionCorreo'];
-  $dominioLogin = $_POST['dominioLogin'];
+  $dominioLogin = $_POST['dominio'];
   $asunto = $_POST['AsuntoMail'];
   $mensaje = $_POST['MensajeMail'];
 
