@@ -139,13 +139,16 @@ $trabajador = $mysqli->query($sql4);
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <p><b>Estatus: </b><span class="' . $clase . '">' . $estatus . '</span></p>
-                                                            </div>
-                                                            <form class="row g-3" action="cancelar_cita.php" method="post">
+                                                            </div>';
+                                                            if ($estatus =! "Completada"){
+                                                                echo ('<form class="row g-3" action="cancelar_cita.php" method="post">
                                                                 <div class="col-sm-6">
                                                                     <input class="form-control" type="text" name="idcita" id="idcita" style="display: none;" value="'. $fila['id_cita'] .'" required />
                                                                     <button type="submit" class="btn btn-danger">Cancelar cita</button>
                                                                 </div>
-                                                            </form>
+                                                            </form>');
+                                                            }
+                                                            echo'
                                                         </div>
                                                     </div>
                                                 </div>

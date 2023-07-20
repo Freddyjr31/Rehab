@@ -30,6 +30,19 @@ $cod_area = $mysqli->query($sql6);
 $sql7 = "SELECT * FROM servicios";
 $servicios = $mysqli->query($sql7);
 
+$sql8 = "SELECT * FROM estatus_usuario";
+$estatus_usuarios = $mysqli->query($sql8);
+
+$ids = array();
+$estatus = array();
+
+if ($estatus_usuarios->num_rows > 0) {
+    while ($fila8 = $estatus_usuarios->fetch_assoc()) {
+        array_push($ids, $fila8['id']);
+        array_push($estatus,$fila8['estatus_usuario']);
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,6 +92,30 @@ $servicios = $mysqli->query($sql7);
 
             </div>
             <hr>
+            <?php
+            if (isset($_GET['error'])) {
+            ?>
+                <p class="error">
+                    <?php
+                    echo $_GET['error']
+                    ?>
+
+                </p>
+            <?php
+            }
+            ?>
+            <?php
+            if (isset($_GET['alert'])) {
+            ?>
+                <p class="notificacion">
+                    <?php
+                    echo $_GET['alert']
+                    ?>
+
+                </p>
+            <?php
+            }
+            ?>
             <!-- Menu de usuario -->
             <div class="row mt-3 mb-5">
                 <div class="d-flex align-items-start">
@@ -197,8 +234,8 @@ $servicios = $mysqli->query($sql7);
                                         if ($servicios->num_rows > 0) {
                                             while ($fila4 = $servicios->fetch_assoc()) {
                                                 echo '<div class="col p-1">
-                                                      <input class="form-check-input" type="checkbox" value="' . $fila4['id'] . '" id="firstCheckbox">
-                                                      <small><label class="form-check-label text-sm text-break" for="firstCheckbox">' . $fila4['nombre_servicio'] . '</label></small>
+                                                      <input class="form-check-input" name="especialidades[]" type="checkbox" value="' . $fila4['id'] . '" id="' . $fila4['id'] . '">
+                                                      <small><label class="form-check-label text-sm text-break" for="' . $fila4['id'] . '">' . $fila4['nombre_servicio'] . '</label></small>
                                                      </div>';
                                             }
                                         }
@@ -229,7 +266,7 @@ $servicios = $mysqli->query($sql7);
                                         <th scope="col">Teléfono</th>
                                         <th scope="col">Estatus</th>
                                         <th scope="col">Rol</th>
-                                        <th></th>
+                                        <th scope="col">Actualizar estatus</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -247,7 +284,21 @@ $servicios = $mysqli->query($sql7);
                                                         <td>" . $fila["estatus"] . "</td>
                                                         <td>" . $fila["nombre_rol"] . "</td>
                                                         <td>
-                                                            <button type='submit' id='cambiar-estatus' class='btn btn-light' data-bs-toggle='modal' data-bs-target='#exampleModal'>Cambiar Estatus</button>
+                                                        <form class='row g-3' action='actualizar_usuario.php' method='post'>
+                                                            <div class='col-sm-6'>
+                                                                <input class='form-control' type='text' name='idusuario' id='idusuario' style='display: none;' value='". $fila['id_usuarios'] ."' required />
+                                                                <select class='form-select' aria-label='Default select example' name='estatus' placeholder='' id='especialista' required>
+                                                                    <option selected>Seleccionar Estatus</option>";
+                                                                    $num = count($ids);
+                                                                    for($i = 0; $i < $num; $i++){
+                                                                        echo '<option value="'. $ids[$i] .'">'. $estatus[$i] .'</option>';
+                                                                    }
+                                                                    echo "</select>
+                                                            </div>
+                                                            <div class='col-sm-6'>
+                                                                <button type='submit' class='btn btn-primary'>Aceptar</button>
+                                                            </div>
+                                                        </form>
                                                         </td>
                                                     </tr>";
                                         }
@@ -302,7 +353,7 @@ $servicios = $mysqli->query($sql7);
                                                                 <p><b>Servicio: </b>' . $fila2['nombre_servicio'] . '</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Especialista: </b>' . $fila2['nombre'] . '</p>
+                                                                <p><b>Especialista: </b>' . $fila2['nombre'] . ' '. $fila2['apellido'] .'</p>
                                                             </div>
                                                             <div class="col-sm-6">
                                                                 <p><b>Fecha y Hora: </b>' . $fila2['fecha'] . ' ' . $fila2['hora'] . '</p>
@@ -310,17 +361,6 @@ $servicios = $mysqli->query($sql7);
                                                             <div class="col-sm-6">
                                                                 <p><b>Estatus: </b><span class="badge rounded-pill text-bg-success">' . $fila2['estatus'] . '</span></p>
                                                             </div>
-                                                            <form class="row g-3" action="">
-                                                                <div class="col-sm-6">
-                                                                    <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
-                                                                        <option selected>Cambiar Estatus </option>
-                                                                        <option value="1">estatus 1</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-sm-6">
-                                                                    <button type="submit" class="btn btn-primary">Actualizar estatus</button>
-                                                                </div>
-                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
