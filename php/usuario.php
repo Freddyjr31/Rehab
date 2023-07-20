@@ -23,7 +23,7 @@ $usuario = $mysqli->query($sql2);
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Rehab Cliente</title>
-    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
+    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/styles.css'>
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
@@ -148,9 +148,19 @@ $usuario = $mysqli->query($sql2);
                             </div>
                             <div class="col-sm-6">
                                 <label class="form-label">Hora *</label>
-                                <input class="form-control" id="horaCita" type="time" name="horaCita" list="listahorasdeseadas" min="06:00" max="15:30" required />
+                                <!--<input class="form-control" id="horaCita" type="time" name="horaCita" list="listahorasdeseadas" min="06:00" max="15:30" required />-->
+                                <select class="form-select" id="horaCita" name="horaCita" required >
+                                    <option value="06:00">06:00</option>
+                                    <option value="07:30">07:30</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:30">10:30<
+                                    /option>
+                                    <option value="01:00">01:00</option>
+                                    <option value="02:30">02:30</option>
+                                </select>
                             </div>
-                            <!-- fecha dos -->
+
+                            <!-- fecha dos 
                             <div class="col-sm-6">
                                 <label class="form-label">Fecha tentativa 2: </label>
                                 <input class="form-control" type="date" name="fechaCita2" id="fechaCita2" min="2023-07-15" max="2030-12-31" required />
@@ -158,8 +168,8 @@ $usuario = $mysqli->query($sql2);
                             <div class="col-sm-6">
                                 <label class="form-label">Hora :</label>
                                 <input class="form-control" id="horaCita2" type="time" name="horaCita2" list="listahorasdeseadas" min="06:00" max="15:30" required />
-                            </div>
-                            <!-- fecha tres -->
+                            </div>-->
+                            <!-- fecha tres 
                             <div class="col-sm-6">
                                 <label class="form-label">Fecha tentativa 3: </label>
                                 <input class="form-control" type="date" name="fechaCita3" name="fechaCita3" min="2023-07-15" max="2030-12-31" required />
@@ -167,23 +177,11 @@ $usuario = $mysqli->query($sql2);
                             <div class="col-sm-6">
                                 <label class="form-label">Hora :</label>
                                 <input class="form-control" id="horaCita3" type="time" name="horaCita3" list="listahorasdeseadas" min="06:00" max="15:30" required />
-                            </div>
+                            </div>-->
                             <div class="col-sm-12">
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="ValidarFormCita();">Agendar</button>
                             </div>
                         </form>
-                        <datalist id="listahorasdeseadas">
-                            <option value="06:00">
-                            <option value="07:00">
-                            <option value="08:00">
-                            <option value="09:00">
-                            <option value="10:00">
-                            <option value="10:30">
-                            <option value="13:00">
-                            <option value="14:30">
-                            <option value="15:00">
-                            <option value="15:30">
-                        </datalist>
 
 
                     </div>

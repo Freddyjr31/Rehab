@@ -27,8 +27,8 @@ function validateFormCrearUsuario() {
     const TelefonoDosValue = telefono2.value.trim();
     const TipoUsuarioValue = tipo.value.trim();
     const ContrasenaValue = password.value.trim();
-    console.log(TipoUsuarioValue)
-    alert(TipoUsuarioValue)
+    /*console.log(TipoUsuarioValue)
+    alert(TipoUsuarioValue)*/
 
     if (NombreValue == '') {
         alert('Por favor, ingrese el nombre del usuario');

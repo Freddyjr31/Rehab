@@ -66,9 +66,9 @@ $usuario = $mysqli->query($sql2);
             <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills me-3 mt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="m-2 BtnMenuUsuario active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Citas pendientes</button>
-                    <button class="m-2 BtnMenuUsuario" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">Citas confirmadas</button>
+                    <!--<button class="m-2 BtnMenuUsuario" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">Citas confirmadas</button>-->
                     <button class="m-2 BtnMenuUsuario" id="v-pills-complet-tab" data-bs-toggle="pill" data-bs-target="#v-pills-complet" type="button" role="tab" aria-controls="v-pills-complet" aria-selected="false">Citas completadas</button>
-                    <button class="m-2 BtnMenuUsuario" id="v-pills-rejected-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rejected" type="button" role="tab" aria-controls="v-pills-rejected" aria-selected="false">Citas rechazadas</button>
+                    <!--<button class="m-2 BtnMenuUsuario" id="v-pills-rejected-tab" data-bs-toggle="pill" data-bs-target="#v-pills-rejected" type="button" role="tab" aria-controls="v-pills-rejected" aria-selected="false">Citas rechazadas</button>-->
                     <button class="m-2 BtnMenuUsuario" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Mi Perfil</button>
                 </div>
                 <div class="tab-content" id="v-pills-tabContent">
@@ -125,10 +125,10 @@ $usuario = $mysqli->query($sql2);
                         </div>
                     </div>
 
-                    <div class="tab-pane fade show" id="v-pills-confirm" role="tabpanel" aria-labelledby="v-pills-confirm-tab" tabindex="0">
+                    <!--<div class="tab-pane fade show" id="v-pills-confirm" role="tabpanel" aria-labelledby="v-pills-confirm-tab" tabindex="0">
                         <h3 class="mt-3">Citas confirmadas</h3>
                         <hr>
-                        <!-- CONSULTAR CITAS CONFIRMADAS -->
+                         CONSULTAR CITAS CONFIRMADAS 
                         <div class="row row-cols-1 row-cols-md-2 g-3">
 
                             <div class="col-md">
@@ -163,7 +163,7 @@ $usuario = $mysqli->query($sql2);
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="tab-pane fade show" id="v-pills-complet" role="tabpanel" aria-labelledby="v-pills-complet-tab" tabindex="0">
                         <h3 class="mt-3">Citas completadas</h3>
@@ -204,10 +204,11 @@ $usuario = $mysqli->query($sql2);
                         </div>
                     </div>
 
-                    <div class="tab-pane fade show" id="v-pills-rejected" role="tabpanel" aria-labelledby="v-pills-rejected-tab" tabindex="0">
+                   
+                    <!-- <div class="tab-pane fade show" id="v-pills-rejected" role="tabpanel" aria-labelledby="v-pills-rejected-tab" tabindex="0">
                         <h3 class="mt-3">Citas rechazadas</h3>
                         <hr>
-                        <!-- CONSULTAR CITAS RECHAZADAS -->
+                         CONSULTAR CITAS RECHAZADAS
                         <div class="row row-cols-1 row-cols-md-2 g-3">
                             <div class="col-md">
                                 <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
@@ -241,7 +242,7 @@ $usuario = $mysqli->query($sql2);
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
                         <h3>Mi Perfil</h3>
