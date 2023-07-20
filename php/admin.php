@@ -1,31 +1,31 @@
 <?php
 
-    session_start();
+session_start();
 
-    if (($_SESSION['usuario']) == NULL) {
-        header('Location: consulta.php');
-    }
+if (($_SESSION['usuario']) == NULL) {
+    header('Location: consulta.php');
+}
 
-    include('conexionbd.php');
+include('conexionbd.php');
 
-    $sql = "SELECT usuarios.*, roles.rol AS nombre_rol, estatus_usuario.estatus_usuario AS estatus, correos.*, telefonos.*, dominios.*, cod_area.* FROM usuarios JOIN roles ON usuarios.rol_id = roles.id JOIN estatus_usuario ON usuarios.id_estatus_usuario = estatus_usuario.id JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod";
-    $resultado = $mysqli->query($sql);
+$sql = "SELECT usuarios.*, roles.rol AS nombre_rol, estatus_usuario.estatus_usuario AS estatus, correos.*, telefonos.*, dominios.*, cod_area.* FROM usuarios JOIN roles ON usuarios.rol_id = roles.id JOIN estatus_usuario ON usuarios.id_estatus_usuario = estatus_usuario.id JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod";
+$resultado = $mysqli->query($sql);
 
-    // $sql2 = "SELECT citas.*, estatus_cita.estatus AS cita_estatus, servicios.nombre_servicio AS servicio, usuarios.* FROM citas JOIN estatus_cita ON citas.id_estatus = estatus_cita.id JOIN servicios ON citas.id_servicio = servicios.id";
+// $sql2 = "SELECT citas.*, estatus_cita.estatus AS cita_estatus, servicios.nombre_servicio AS servicio, usuarios.* FROM citas JOIN estatus_cita ON citas.id_estatus = estatus_cita.id JOIN servicios ON citas.id_servicio = servicios.id";
 
-    $sql3 = "SELECT * FROM citas JOIN usuarios AS cliente ON cliente.id_usuarios = citas.id_cliente JOIN usuarios AS trabajador ON trabajador.id_usuarios = citas.id_trabajador JOIN estatus_cita ON estatus_cita.id = citas.id_estatus JOIN servicios ON servicios.id = citas.id_servicio";
+$sql3 = "SELECT * FROM citas JOIN usuarios AS cliente ON cliente.id_usuarios = citas.id_cliente JOIN usuarios AS trabajador ON trabajador.id_usuarios = citas.id_trabajador JOIN estatus_cita ON estatus_cita.id = citas.id_estatus JOIN servicios ON servicios.id = citas.id_servicio";
 
-    // $sql2 = "SELECT * FROM citas";
-    $citas = $mysqli->query($sql3);
+// $sql2 = "SELECT * FROM citas";
+$citas = $mysqli->query($sql3);
 
-    $sql4 = "SELECT * FROM roles";
-    $roles = $mysqli->query($sql4);
+$sql4 = "SELECT * FROM roles";
+$roles = $mysqli->query($sql4);
 
-    $sql5 = "SELECT * FROM dominios";
-    $dominios = $mysqli->query($sql5);
+$sql5 = "SELECT * FROM dominios";
+$dominios = $mysqli->query($sql5);
 
-    $sql6 = "SELECT * FROM cod_area";
-    $cod_area = $mysqli->query($sql6);
+$sql6 = "SELECT * FROM cod_area";
+$cod_area = $mysqli->query($sql6);
 
 ?>
 <!DOCTYPE html>
@@ -35,6 +35,7 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Inversiones Rehab</title>
+    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' href='../css/styles.css'>
     <link rel='stylesheet' href='../css/home.css'>
@@ -51,11 +52,12 @@
                 <img src="../img/RSB.png" class="mt-2" width="150px" height="auto" alt="">
             </div>
             <nav>
-                <a style="color:black" href="../index.php" ;>Inicio</a>
-                <a class="colorhover" href="nosotros.html">Nosotros</a>
-                <a class="colorhover" href="servicios.html">Servicios</a>
+                <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
+                <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
+                <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
-                <a style="color:black" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
+                <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
         </div>
     </header>
@@ -118,11 +120,11 @@
                                     <label for="" class="form-label">Dominio * </label>
                                     <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
                                         <?php
-                                            if ($dominios->num_rows > 0) {
-                                                while ($fila4 = $dominios->fetch_assoc()) {
-                                                    echo '<option value="' . $fila4['id_dominio'] . '">' . $fila4['nombre_dominio'] . '</option>';
-                                                }
+                                        if ($dominios->num_rows > 0) {
+                                            while ($fila4 = $dominios->fetch_assoc()) {
+                                                echo '<option value="' . $fila4['id_dominio'] . '">' . $fila4['nombre_dominio'] . '</option>';
                                             }
+                                        }
                                         ?>
                                     </select>
                                 </div>
@@ -183,7 +185,7 @@
                                         ?>
                                     </select>
                                 </div>
-                                
+
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>

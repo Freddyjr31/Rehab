@@ -1,19 +1,19 @@
 <?php
 
-    session_start();
+session_start();
 
-    if (($_SESSION['usuario']) == NULL) {
-        header('Location: consulta.php');
-    }
+if (($_SESSION['usuario']) == NULL) {
+    header('Location: consulta.php');
+}
 
-    include('conexionbd.php');
-    $id = $_SESSION['id'];
+include('conexionbd.php');
+$id = $_SESSION['id'];
 
-    $sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_cliente = '$id'";
-    $resultado = $mysqli->query($sql);
+$sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_cliente = '$id'";
+$resultado = $mysqli->query($sql);
 
-    $sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
-    $usuario = $mysqli->query($sql2);
+$sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
+$usuario = $mysqli->query($sql2);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,8 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Inversiones Rehab</title>
+    <title>Rehab Cliente</title>
+    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/styles.css'>
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
@@ -38,12 +39,12 @@
                 <img src="../img/RSB.png" class="mt-2" width="150px" height="auto" alt="">
             </div>
             <nav>
-                <a style="color:black" href="../index.php" ;>Inicio</a>
-                <a class="colorhover" href="../html/nosotros.html">Nosotros</a>
-                <a class="colorhover" href="../html/servicios.html">Servicios</a>
-                <a class="colorhover" href="../html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
+                <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
+                <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
-                <a style="color:black" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
+                <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
         </div>
     </header>
@@ -51,7 +52,7 @@
     <div class="container-sm mt-5">
         <div class="row d-flex justify-content-between">
             <div class="col">
-                <h2><?php echo $_SESSION['nombre'] . " " .$_SESSION['apellido']; ?> <small class="text-body-secondary">Consulta y agenda tus citas</small></h2>
+                <h2><?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']; ?> <small class="text-body-secondary">Consulta y agenda tus citas</small></h2>
             </div>
             <!-- boton de cerrar sesion -->
             <form action="CerrarSesion.php" method="POST" class="col d-flex justify-content-end">
@@ -76,24 +77,24 @@
                         <div class="row row-cols-1 row-cols-md-2 g-3">
                             <?php
 
-                                if ($resultado->num_rows > 0) {
-                                    while ($fila = $resultado->fetch_assoc()) {
+                            if ($resultado->num_rows > 0) {
+                                while ($fila = $resultado->fetch_assoc()) {
 
-                                        if ($fila['id_estatus'] == 1){
-                                            $clase = "badge rounded-pill text-bg-warning";
-                                            $estatus = "Pendiente";
-                                        }elseif ($fila['id_estatus'] == 2){
-                                            $clase = "badge rounded-pill text-bg-info";
-                                            $estatus = "Confirmada";
-                                        }elseif ($fila['id_estatus'] == 3){
-                                            $clase = "badge rounded-pill text-bg-danger";
-                                            $estatus = "Rechazada";
-                                        }elseif ($fila['id_estatus'] == 4){
-                                            $clase = "badge rounded-pill text-bg-success";
-                                            $estatus = "Completada";
-                                        }
+                                    if ($fila['id_estatus'] == 1) {
+                                        $clase = "badge rounded-pill text-bg-warning";
+                                        $estatus = "Pendiente";
+                                    } elseif ($fila['id_estatus'] == 2) {
+                                        $clase = "badge rounded-pill text-bg-info";
+                                        $estatus = "Confirmada";
+                                    } elseif ($fila['id_estatus'] == 3) {
+                                        $clase = "badge rounded-pill text-bg-danger";
+                                        $estatus = "Rechazada";
+                                    } elseif ($fila['id_estatus'] == 4) {
+                                        $clase = "badge rounded-pill text-bg-success";
+                                        $estatus = "Completada";
+                                    }
 
-                                        echo '<div class="col-md">
+                                    echo '<div class="col-md">
                                                 <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
                                                     <div class="card-body">
                                                         <div class="row g-4">
@@ -107,16 +108,16 @@
                                                                 <p><b>Fecha y Hora: </b>' . $fila['fecha'] . ' ' . $fila['hora'] . '</p>
                                                             </div>
                                                             <div class="col-sm-6">
-                                                                <p><b>Estatus: </b><span class="'. $clase .'">' . $estatus . '</span></p>
+                                                                <p><b>Estatus: </b><span class="' . $clase . '">' . $estatus . '</span></p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>';
-                                    }
-                                } else {
-                                    echo "No existen citas";
                                 }
+                            } else {
+                                echo "No existen citas";
+                            }
 
                             ?>
                         </div>
@@ -192,14 +193,14 @@
                         <hr>
                         <div class="row g-5 mt-3 mb-5">
                             <?php
-                                if ($usuario->num_rows > 0) {
-                                        while ($fila2 = $usuario->fetch_assoc()) {
-                                            if ($fila2['sexo'] == 'M'){
-                                                $sexo = "Masculino";
-                                            }elseif($fila2['sexo'] == 'F'){
-                                                $sexo = "Femenino";
-                                            }
-                                            echo '<div class="col-sm-4">
+                            if ($usuario->num_rows > 0) {
+                                while ($fila2 = $usuario->fetch_assoc()) {
+                                    if ($fila2['sexo'] == 'M') {
+                                        $sexo = "Masculino";
+                                    } elseif ($fila2['sexo'] == 'F') {
+                                        $sexo = "Femenino";
+                                    }
+                                    echo '<div class="col-sm-4">
                                                     <p class="text-capitalize"><b>Nombre: </b>' . $fila2['nombre'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
@@ -209,16 +210,16 @@
                                                     <p class="text-capitalize"><b>Cédula: </b>' . $fila2['cedula'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <p><b>Correo: </b>' . $fila2['nombre_correo'] . $fila2['nombre_dominio'] .'</p>
+                                                    <p><b>Correo: </b>' . $fila2['nombre_correo'] . $fila2['nombre_dominio'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <p><b>Teléfono: </b>' . $fila2['area'] . $fila2['numero'] .'</p>
+                                                    <p><b>Teléfono: </b>' . $fila2['area'] . $fila2['numero'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <p class="text-capitalize"><b>Sexo: </b>' . $sexo .'</p>
+                                                    <p class="text-capitalize"><b>Sexo: </b>' . $sexo . '</p>
                                                 </div>';
-                                        }
-                                    }
+                                }
+                            }
                             ?>
                         </div>
                     </div>

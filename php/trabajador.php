@@ -1,19 +1,19 @@
 <?php
 
-    session_start();
+session_start();
 
-    if (($_SESSION['usuario']) == NULL) {
-        header('Location: consulta.php');
-    }
+if (($_SESSION['usuario']) == NULL) {
+    header('Location: consulta.php');
+}
 
-    include('conexionbd.php');
-    $id = $_SESSION['id'];
+include('conexionbd.php');
+$id = $_SESSION['id'];
 
-    $sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_trabajador = '$id' AND id_estatus = 1";
-    $pendientes = $mysqli->query($sql);
+$sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_trabajador = '$id' AND id_estatus = 1";
+$pendientes = $mysqli->query($sql);
 
-    $sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
-    $usuario = $mysqli->query($sql2);
+$sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
+$usuario = $mysqli->query($sql2);
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,8 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Inversiones Rehab</title>
+    <title>Rehab Especialista</title>
+    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/styles.css'>
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
@@ -38,12 +39,12 @@
                 <img src="../img/RSB.png" class="mt-2" width="150px" height="auto" alt="">
             </div>
             <nav>
-                <a style="color:black" href="../index.php" ;>Inicio</a>
-                <a class="colorhover" href="../html/nosotros.html">Nosotros</a>
-                <a class="colorhover" href="../html/servicios.html">Servicios</a>
-                <a class="colorhover" href="../html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
+                <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
+                <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
-                <a style="color:black" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
+                <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
         </div>
     </header>
@@ -51,7 +52,7 @@
     <div class="container-sm mt-5">
         <div class="row d-flex justify-content-between">
             <div class="col">
-                <h2><?php echo $_SESSION['nombre'] . " " .$_SESSION['apellido']; ?></h2>
+                <h2><?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido']; ?></h2>
             </div>
             <!-- boton de cerrar cesion -->
             <form action="CerrarSesion.php" method="POST" class="col d-flex justify-content-end">
@@ -76,21 +77,21 @@
                         <hr>
                         <!-- CONSULTAR CITAS PENDIENTES -->
                         <div class="row row-cols-1 row-cols-md-2 g-3">
-                        <?php
+                            <?php
 
                             if ($pendientes->num_rows > 0) {
                                 while ($fila = $pendientes->fetch_assoc()) {
 
-                                    if ($fila['id_estatus'] == 1){
+                                    if ($fila['id_estatus'] == 1) {
                                         $clase = "badge rounded-pill text-bg-warning";
                                         $estatus = "Pendiente";
-                                    }elseif ($fila['id_estatus'] == 2){
+                                    } elseif ($fila['id_estatus'] == 2) {
                                         $clase = "badge rounded-pill text-bg-info";
                                         $estatus = "Confirmada";
-                                    }elseif ($fila['id_estatus'] == 3){
+                                    } elseif ($fila['id_estatus'] == 3) {
                                         $clase = "badge rounded-pill text-bg-danger";
                                         $estatus = "Rechazada";
-                                    }elseif ($fila['id_estatus'] == 4){
+                                    } elseif ($fila['id_estatus'] == 4) {
                                         $clase = "badge rounded-pill text-bg-success";
                                         $estatus = "Completada";
                                     }
@@ -109,7 +110,7 @@
                                                             <p><b>Fecha y Hora: </b>' . $fila['fecha'] . ' ' . $fila['hora'] . '</p>
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <p><b>Estatus: </b><span class="'. $clase .'">' . $estatus . '</span></p>
+                                                            <p><b>Estatus: </b><span class="' . $clase . '">' . $estatus . '</span></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +121,7 @@
                                 echo "No existen citas";
                             }
 
-                        ?>
+                            ?>
                         </div>
                     </div>
 
@@ -247,15 +248,15 @@
                         <!-- VER DATOS DEL PERFIL LOGUEADO -->
                         <hr>
                         <div class="row g-5 mt-3 mb-5">
-                        <?php
-                                if ($usuario->num_rows > 0) {
-                                        while ($fila2 = $usuario->fetch_assoc()) {
-                                            if ($fila2['sexo'] == 'M'){
-                                                $sexo = "Masculino";
-                                            }elseif($fila2['sexo'] == 'F'){
-                                                $sexo = "Femenino";
-                                            }
-                                            echo '<div class="col-sm-4">
+                            <?php
+                            if ($usuario->num_rows > 0) {
+                                while ($fila2 = $usuario->fetch_assoc()) {
+                                    if ($fila2['sexo'] == 'M') {
+                                        $sexo = "Masculino";
+                                    } elseif ($fila2['sexo'] == 'F') {
+                                        $sexo = "Femenino";
+                                    }
+                                    echo '<div class="col-sm-4">
                                                     <p class="text-capitalize"><b>Nombre: </b>' . $fila2['nombre'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
@@ -265,16 +266,16 @@
                                                     <p class="text-capitalize"><b>Cédula: </b>' . $fila2['cedula'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <p><b>Correo: </b>' . $fila2['nombre_correo'] . $fila2['nombre_dominio'] .'</p>
+                                                    <p><b>Correo: </b>' . $fila2['nombre_correo'] . $fila2['nombre_dominio'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <p><b>Teléfono: </b>' . $fila2['area'] . $fila2['numero'] .'</p>
+                                                    <p><b>Teléfono: </b>' . $fila2['area'] . $fila2['numero'] . '</p>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <p class="text-capitalize"><b>Sexo: </b>' . $sexo .'</p>
+                                                    <p class="text-capitalize"><b>Sexo: </b>' . $sexo . '</p>
                                                 </div>';
-                                        }
-                                    }
+                                }
+                            }
                             ?>
                         </div>
                     </div>
@@ -297,52 +298,52 @@
     </section>
 
     <footer class="p-3">
-            <div class="row p-2 justify-content-center">
-                <div class="col-md-4 p-2">
-                    <label for=""></label>
-                    <p class="text-sm text-break fw-light TextAlign">
-                        Somos una empresa dedicada a la prestación de servicios de
-                        rehabilitación, enfermería, belleza, estética corporal y facial, su
-                        necesidad actual está centrada en mejorar la gestión de sus
-                        servicios y facilitar de esta manera la comunicación con sus
-                        clientes.
-                    </p>
-                </div>
+        <div class="row p-2 justify-content-center">
+            <div class="col-md-4 p-2">
+                <label for=""></label>
+                <p class="text-sm text-break fw-light TextAlign">
+                    Somos una empresa dedicada a la prestación de servicios de
+                    rehabilitación, enfermería, belleza, estética corporal y facial, su
+                    necesidad actual está centrada en mejorar la gestión de sus
+                    servicios y facilitar de esta manera la comunicación con sus
+                    clientes.
+                </p>
+            </div>
 
-                <div class="col-md-4 p-2">
-                    <h6 class="text-center">Ubicación</h6>
-                    <div class="col-md m-2">
-                        <div class="input-group flex-nowrap mb-2">
-                            <img class="Icons" src="../img/icons/icons8-find-clinic-48.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="" />
-                            <span class="text-sm fw-light TextAlign">
-                                Parroquia Los Teques, Jurisdicción del Municipio Guaicaipuro,
-                                del Estado Bolivariano de Miranda, Ciudad de Los Teques,
-                                Final Av. Bolivar.
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 p-2">
-                    <h6 class="text-center">Teléfonos</h6>
-                    <div class="col m-2">
-                        <div class="input-group mb-2 d-flex justify-content-center">
-                            <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
-                            <span class="text-sm text-break fw-light text-center">
-                                +58 412-020-8921</span>
-                        </div>
+            <div class="col-md-4 p-2">
+                <h6 class="text-center">Ubicación</h6>
+                <div class="col-md m-2">
+                    <div class="input-group flex-nowrap mb-2">
+                        <img class="Icons" src="../img/icons/icons8-find-clinic-48.png" width="30" height="30" class="d-inline-block align-top mr-2" alt="" />
+                        <span class="text-sm fw-light TextAlign">
+                            Parroquia Los Teques, Jurisdicción del Municipio Guaicaipuro,
+                            del Estado Bolivariano de Miranda, Ciudad de Los Teques,
+                            Final Av. Bolivar.
+                        </span>
                     </div>
                 </div>
             </div>
-            <div class="row border-top border-secondary-subtle p-2 justify-content-center">
-                <div class="col-md p-2">
-                    <label for=""></label>
-                    <p class="text-justify text-sm text-break fw-light text-center">
-                        © 2023 Inversiones Rehab Salud y Belleza
-                    </p>
+
+            <div class="col-md-4 p-2">
+                <h6 class="text-center">Teléfonos</h6>
+                <div class="col m-2">
+                    <div class="input-group mb-2 d-flex justify-content-center">
+                        <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+                        <span class="text-sm text-break fw-light text-center">
+                            +58 412-020-8921</span>
+                    </div>
                 </div>
             </div>
-        </footer>
+        </div>
+        <div class="row border-top border-secondary-subtle p-2 justify-content-center">
+            <div class="col-md p-2">
+                <label for=""></label>
+                <p class="text-justify text-sm text-break fw-light text-center">
+                    © 2023 Inversiones Rehab Salud y Belleza
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script src="../assets/js/jquery.js"></script>
     <script src="../assets/js/bootstrap.js"></script>
