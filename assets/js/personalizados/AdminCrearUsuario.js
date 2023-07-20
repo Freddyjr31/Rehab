@@ -29,6 +29,7 @@ function validateFormCrearUsuario(event) {
     const ContrasenaValue = password.value.trim();
     /*console.log(TipoUsuarioValue)
     alert(TipoUsuarioValue)*/
+    const regex = /^[^()<>@,;:"[\]ç%&]*$/ 
 
     if (NombreValue == '') {
         alert('Por favor, ingrese el nombre del usuario');
@@ -66,21 +67,17 @@ function validateFormCrearUsuario(event) {
         return false;
     }
 
-
-
-
     if (CorreoValue == '') {
         alert('Por favor, ingrese un correo');
         correo.focus();
         return false;
     }
 
-    /*var re = /^[a-z0-9]*$/i;
-    if (CorreoValue.match(re) !== null) {
-        alert('Por favor, no introducir ');
+    if (!regex.test(CorreoValue)) {
+        alert('Por favor No ingresar @ en el campo correo');
         correo.focus();
         return false;
-    }*/
+    }
 
     if (DominioValue == '') {
         alert('Por favor, ingrese un Dominio de Correo');

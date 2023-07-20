@@ -11,8 +11,8 @@ const codigo2 = document.querySelector('#CodigoOPC');
 const telefono2 = document.querySelector('#telefonoOPC');
 const password = document.querySelector('#password');
 
-function validateForm() {
-   // event.preventDefault(); // Evita que el formulario se envíe
+function validateFormR(event) {
+   event.preventDefault(); // Evita que el formulario se envíe
 
     const NombreValue = nombre.value.trim();
     const ApellidoValue = apellido.value.trim();
@@ -26,6 +26,7 @@ function validateForm() {
     const TelefonoDosValue = telefono2.value.trim();
     const ContrasenaValue = password.value.trim();
     //console.log(MensajeMailValue)
+    const regex = /^[^()<>@,;:"[\]ç%&]*$/ 
 
     if (NombreValue == '') {
         alert('Por favor, ingrese el nombre del usuario');
@@ -53,6 +54,12 @@ function validateForm() {
 
     if (CorreoValue == '') {
         alert('Por favor, ingrese un correo');
+        correo.focus();
+        return false;
+    }
+
+    if (!regex.test(CorreoValue)) {
+        alert('Por favor, NO ingrese @ en el campo correo');
         correo.focus();
         return false;
     }
@@ -93,7 +100,7 @@ function validateForm() {
         return false;
     }
     // Si todo está bien, se envía el formulario
-    return true;
+    return FormCrearUsuario.submit();
 }
 
 //alert("formulario validado")

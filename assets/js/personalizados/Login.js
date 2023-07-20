@@ -1,6 +1,7 @@
 
 
-function login_validacion() {
+function login_validacion(event) {
+    event.preventDefault();
 
     const FormLogin = document.querySelector('#FormLogin');
     const Usuario = document.querySelector('#usuario');
@@ -11,10 +12,17 @@ function login_validacion() {
     const DominioValue = Dominio.value.trim();
     const contrasenaValue = contrasena.value.trim();
     
+    const regex = /^[^()<>@,;:"[\]ç%&]*$/ 
     
     // valido el nombre
     if (UsuarioValue == '') {
         alert('Por favor, ingresa tu usuario');
+        Usuario.focus();
+        return false;
+    }
+
+    if (!regex.test(UsuarioValue)) {
+        alert('Por favor No ingresar @ en el campo usuario');
         Usuario.focus();
         return false;
     }
@@ -32,5 +40,5 @@ function login_validacion() {
     }
     //el formulario se envia
     alert("Bienvenido a Rehab!");
-    return true;
+    return FormLogin.submit();
 }

@@ -144,7 +144,7 @@ $cod_area = $mysqli->query($sql6);
                                     <input type="password" name="password" placeholder="" id="password" class="form-control" required />
                                 </div>
 
-                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateForm();">Registrarme</button>
+                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormR(event);">Registrarme</button>
                             </form>
                         </div>
                     </div>

@@ -12,7 +12,7 @@ $dominios = $mysqli->query($sql5);
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Consulta | Login</title>
+    <title>ConsultaLogin</title>
     <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/styles.css'>
@@ -86,7 +86,7 @@ $dominios = $mysqli->query($sql5);
                                     <input type="password" name="Clave" placeholder="Contraseña" id="clave" class="form-control" required />
                                 </div>
 
-                                <button type="submit" class="btn btn-danger" onclick="login_validacion();"> Ingresar </button>
+                                <button type="submit" class="btn btn-danger" onclick="login_validacion(event)"> Ingresar </button>
                                 <hr>
                                 <span class="text-center">¿No tienes una cuenta? <a href="./register.php" type="button" class=""> Registrate aquí</a></span>
                             </form>
