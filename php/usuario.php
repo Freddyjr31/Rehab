@@ -68,28 +68,28 @@ $trabajador = $mysqli->query($sql4);
         </div>
         <hr>
         <?php
-            if (isset($_GET['error'])) {
+        if (isset($_GET['error'])) {
         ?>
-        <p class="error">
-            <?php
+            <p class="error">
+                <?php
                 echo $_GET['error']
-            ?>
+                ?>
 
-        </p>
+            </p>
         <?php
-            }
+        }
         ?>
         <?php
-            if (isset($_GET['alert'])) {
+        if (isset($_GET['alert'])) {
         ?>
-        <p class="notificacion">
-            <?php
+            <p class="notificacion">
+                <?php
                 echo $_GET['alert']
-            ?>
+                ?>
 
-        </p>
+            </p>
         <?php
-            }
+        }
         ?>
         <!-- Menu de usuario -->
         <div class="row mt-3 mb-5">
@@ -140,6 +140,11 @@ $trabajador = $mysqli->query($sql4);
                                                             <div class="col-sm-6">
                                                                 <p><b>Estatus: </b><span class="' . $clase . '">' . $estatus . '</span></p>
                                                             </div>
+                                                            <form class="row g-3" action="">
+                                                                <div class="col-sm-6">
+                                                                    <button type="submit" class="btn btn-danger">Cancelar cita</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -162,11 +167,11 @@ $trabajador = $mysqli->query($sql4);
                                 <select class="form-select" aria-label="Default select example" name="servicio" placeholder="" id="servicio" required>
                                     <option selected>... </option>
                                     <?php
-                                        if ($servicios->num_rows > 0) {
-                                            while ($fila3 = $servicios->fetch_assoc()) {
-                                                echo '<option value="' . $fila3['id'] . '">' . $fila3['nombre_servicio'] . '</option>';
-                                            }
+                                    if ($servicios->num_rows > 0) {
+                                        while ($fila3 = $servicios->fetch_assoc()) {
+                                            echo '<option value="' . $fila3['id'] . '">' . $fila3['nombre_servicio'] . '</option>';
                                         }
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -175,11 +180,11 @@ $trabajador = $mysqli->query($sql4);
                                 <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
                                     <option selected>... </option>
                                     <?php
-                                        if ($trabajador->num_rows > 0) {
-                                            while ($fila4 = $trabajador->fetch_assoc()) {
-                                                echo '<option value="' . $fila4['id_usuarios'] . '">' . $fila4['nombre'] . $fila4['apellido'] .'</option>';
-                                            }
+                                    if ($trabajador->num_rows > 0) {
+                                        while ($fila4 = $trabajador->fetch_assoc()) {
+                                            echo '<option value="' . $fila4['id_usuarios'] . '">' . $fila4['nombre'] . $fila4['apellido'] . '</option>';
                                         }
+                                    }
                                     ?>
                                 </select>
                             </div>
@@ -191,7 +196,7 @@ $trabajador = $mysqli->query($sql4);
                             <div class="col-sm-6">
                                 <label class="form-label">Hora *</label>
                                 <!--<input class="form-control" id="horaCita" type="time" name="horaCita" list="listahorasdeseadas" min="06:00" max="15:30" required />-->
-                                <select class="form-select" id="horaCita" name="horaCita" required >
+                                <select class="form-select" id="horaCita" name="horaCita" required>
                                     <option value="06:00">06:00</option>
                                     <option value="07:30">07:30</option>
                                     <option value="09:00">09:00</option>

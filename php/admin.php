@@ -101,7 +101,7 @@ $cod_area = $mysqli->query($sql6);
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Sexo * </label>
                                     <select class="form-select" aria-label="Default select example" name="sexo" placeholder="" id="sexo">
-                                        <option selected>... </option>
+                                        <option value="" selected>... </option>
                                         <option value="M">Masculino</option>
                                         <option value="F">Femenino</option>
                                     </select>
@@ -118,7 +118,7 @@ $cod_area = $mysqli->query($sql6);
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Dominio * </label>
-                                    <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
+                                    <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio" required>
                                         <?php
                                         if ($dominios->num_rows > 0) {
                                             while ($fila4 = $dominios->fetch_assoc()) {
@@ -132,8 +132,8 @@ $cod_area = $mysqli->query($sql6);
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Codigo de área * </label>
-                                    <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo">
-                                        <option selected>... </option>
+                                    <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo" required>
+                                        <option value="" selected>... </option>
                                         <?php
                                         if ($cod_area->num_rows > 0) {
                                             while ($fila5 = $cod_area->fetch_assoc()) {
@@ -147,7 +147,7 @@ $cod_area = $mysqli->query($sql6);
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Telefono * </label>
-                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
+                                    <input type="text" name="telefono" placeholder="" id="telefono" class="form-control" required/>
                                 </div>
 
                                 <!-- telefono opcional -->
@@ -174,7 +174,7 @@ $cod_area = $mysqli->query($sql6);
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Tipo de usuario * </label>
                                     <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" required>
-                                        <option selected>... </option>
+                                        <option value="" selected>... </option>
                                         <?php
                                         if ($roles->num_rows > 0) {
                                             while ($fila3 = $roles->fetch_assoc()) {
@@ -189,9 +189,9 @@ $cod_area = $mysqli->query($sql6);
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" />
+                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required/>
                                 </div>
-                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormCrearUsuario();">Crear usuario</button>
+                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormCrearUsuario(event)">Crear usuario</button>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">

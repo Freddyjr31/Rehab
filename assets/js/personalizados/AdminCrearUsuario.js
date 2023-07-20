@@ -12,8 +12,8 @@ const telefono2 = document.querySelector('#telefono2');
 const tipo = document.querySelector('#tipo');
 const password = document.querySelector('#password');
 
-function validateFormCrearUsuario() {
-   // event.preventDefault(); // Evita que el formulario se envíe
+function validateFormCrearUsuario(event) {
+   event.preventDefault(); // Evita que el formulario se envíe
 
     const NombreValue = nombre.value.trim();
     const ApellidoValue = apellido.value.trim();
@@ -54,15 +54,49 @@ function validateFormCrearUsuario() {
         return false;
     }
 
+    if (CedulaValue.length < 6) {
+        alert('Número de cédula incompleto');
+        cedula.focus();
+        return false;
+    }
+
+    if (CedulaValue.length > 8) {
+        alert('Número de cédula excede el limite');
+        cedula.focus();
+        return false;
+    }
+    
+
+
+
     if (CorreoValue == '') {
         alert('Por favor, ingrese un correo');
         correo.focus();
         return false;
     }
 
+    /*var re = /^[a-z0-9]*$/i;
+    if (CorreoValue.match(re) !== null) {
+        alert('Por favor, no introducir ');
+        correo.focus();
+        return false;
+    }*/
+
     if (DominioValue == '') {
         alert('Por favor, ingrese un Dominio de Correo');
         dominio.focus();
+        return false;
+    }
+
+    if (TelefonoValue.length < 7) {
+        alert('Número de telefono incompleto');
+        telefono.focus();
+        return false;
+    }
+
+    if (TelefonoValue.length > 7) {
+        alert('Número de télefono excede limite de caracteres');
+        telefono.focus();
         return false;
     }
 
@@ -102,9 +136,9 @@ function validateFormCrearUsuario() {
         return false;
     }
     // Si todo está bien, se envía el formulario
-    return true;
+    return FormCrearUsuario.submit();
 }
 
 //alert("formulario validado")
 
-//FormContactos.addEventListener('submit', validateForm);
+//FormCrearUsuario.addEventListener('submit', validateFormCrearUsuario);
