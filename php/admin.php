@@ -190,27 +190,6 @@ if ($estatus_usuarios->num_rows > 0) {
                                     <input type="number" name="telefono" placeholder="" id="telefono" class="form-control" required />
                                 </div>
 
-                                <!-- telefono opcional -->
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Codigo de área </label>
-                                    <select class="form-select" aria-label="Default select example" name="codigo2" placeholder="" id="codigo2">
-                                        <option selected>... </option>
-                                        <?php
-                                        if ($cod_area->num_rows > 0) {
-                                            while ($fila5 = $cod_area->fetch_assoc()) {
-                                                echo '<option value="' . $fila5['id_cod'] . '">' . $fila5['area'] . '</option>';
-                                            }
-                                        }
-
-                                        ?>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Telefono </label>
-                                    <input type="text" name="telefono2" placeholder="" id="telefono2" class="form-control" />
-                                </div>
-
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Tipo de usuario * </label>
                                     <select class="form-select" aria-label="Default select example" name="tipo" id="tipo" onclick="MostrarEspecialidades();" required>

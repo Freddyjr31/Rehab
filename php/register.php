@@ -120,25 +120,6 @@ $cod_area = $mysqli->query($sql6);
                                     <input required type="text" name="telefono" placeholder="" id="telefono" class="form-control" />
                                 </div>
 
-
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Código de área </label>
-                                    <select class="form-select" aria-label="Default select example" name="CodigoOPC" placeholder="" id="CodigoOPC">
-                                        <option selected>... </option>
-                                        <option value="MoV14">0414</option>
-                                        <option value="Mov24">0424</option>
-                                        <option value="Mov16">0416</option>
-                                        <option value="Mov26">0426</option>
-                                        <option value="Dig12">0412</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">télefono : </label>
-                                    <input type="text" name="telefonoOPC" placeholder="" id="telefonoOPC" class="form-control" />
-                                </div>
-
-
-
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
                                     <input type="password" name="password" placeholder="" id="password" class="form-control" required />

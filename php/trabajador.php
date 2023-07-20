@@ -119,46 +119,6 @@ $usuario = $mysqli->query($sql2);
                         </div>
                     </div>
 
-                    <!--<div class="tab-pane fade show" id="v-pills-confirm" role="tabpanel" aria-labelledby="v-pills-confirm-tab" tabindex="0">
-                        <h3 class="mt-3">Citas confirmadas</h3>
-                        <hr>
-                         CONSULTAR CITAS CONFIRMADAS 
-                        <div class="row row-cols-1 row-cols-md-2 g-3">
-
-                            <div class="col-md">
-                                <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
-                                    <div class="card-body">
-                                        <div class="row g-4">
-                                            <div class="col-sm-6">
-                                                <p><b>Servicio :</b> nbfdsfn </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Especialista :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Fecha y Hora :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Estatus : </b><span class="badge rounded-pill text-bg-info"> confirmada </span></p>
-                                            </div>
-                                            <form class="row g-3" action="">
-                                                <div class="col-sm-6">
-                                                    <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
-                                                        <option selected>Cambiar Estatus </option>
-                                                        <option value="1">estatus 1</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <button type="submit" class="btn btn-primary">Actualizar estatus</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="tab-pane fade show" id="v-pills-complet" role="tabpanel" aria-labelledby="v-pills-complet-tab" tabindex="0">
                         <h3 class="mt-3">Citas completadas</h3>
                         <hr>
@@ -196,46 +156,6 @@ $usuario = $mysqli->query($sql2);
                             ?>
                         </div>
                     </div>
-
-                   
-                    <!-- <div class="tab-pane fade show" id="v-pills-rejected" role="tabpanel" aria-labelledby="v-pills-rejected-tab" tabindex="0">
-                        <h3 class="mt-3">Citas rechazadas</h3>
-                        <hr>
-                         CONSULTAR CITAS RECHAZADAS
-                        <div class="row row-cols-1 row-cols-md-2 g-3">
-                            <div class="col-md">
-                                <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
-                                    <div class="card-body">
-                                        <div class="row g-4">
-                                            <div class="col-sm-6">
-                                                <p><b>Servicio :</b> nbfdsfn </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Especialista :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Fecha y Hora :</b> </p>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <p><b>Estatus : </b><span class="badge rounded-pill text-bg-danger"> rechazada </span></p>
-                                            </div>
-                                            <form class="row g-3" action="">
-                                                <div class="col-sm-6">
-                                                    <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
-                                                        <option selected>Cambiar Estatus </option>
-                                                        <option value="1">estatus 1</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-6">
-                                                    <button type="submit" class="btn btn-primary">Actualizar estatus</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
 
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab" tabindex="0">
                         <h3>Mi Perfil</h3>
