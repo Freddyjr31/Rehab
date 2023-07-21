@@ -7,8 +7,6 @@ const correo = document.querySelector('#correo');
 const dominio = document.querySelector('#dominio');
 const codigo = document.querySelector('#Codigo');
 const telefono = document.querySelector('#telefono');
-const codigo2 = document.querySelector('#CodigoOPC');
-const telefono2 = document.querySelector('#telefonoOPC');
 const password = document.querySelector('#password');
 
 function validateFormR(event) {
@@ -22,8 +20,6 @@ function validateFormR(event) {
     const DominioValue = dominio.value.trim();
     const CodigoValue = codigo.value.trim();
     const TelefonoValue = telefono.value.trim();
-    const CodigoDosValue = codigo2.value.trim();
-    const TelefonoDosValue = telefono2.value.trim();
     const ContrasenaValue = password.value.trim();
     //console.log(MensajeMailValue)
     const regex = /^[^()<>@,;:"[\]ç%&]*$/ 
@@ -105,18 +101,6 @@ function validateFormR(event) {
         codigo.focus();
         return false;
     }
-
-    /*if (CodigoDosValue == '') {
-        alert('Por favor, ingresa tu Mensaje');
-        codigo2.focus();
-        return false;
-    }
-
-    if (TelefonoDosValue == '') {
-        alert('Por favor, ingresa tu Mensaje');
-        telefono2.focus();
-        return false;
-    }*/
 
     if (ContrasenaValue == '') {
         alert('Por favor, ingrese una contraseña');

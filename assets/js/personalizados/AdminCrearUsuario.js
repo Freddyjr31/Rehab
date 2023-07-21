@@ -7,8 +7,6 @@ const correo = document.querySelector('#correo');
 const dominio = document.querySelector('#dominio');
 const codigo = document.querySelector('#codigo');
 const telefono = document.querySelector('#telefono');
-const codigo2 = document.querySelector('#codigo2');
-const telefono2 = document.querySelector('#telefono2');
 const tipo = document.querySelector('#tipo');
 const password = document.querySelector('#password');
 
@@ -23,12 +21,9 @@ function validateFormCrearUsuario(event) {
     const DominioValue = dominio.value.trim();
     const CodigoValue = codigo.value.trim();
     const TelefonoValue = telefono.value.trim();
-    const CodigoDosValue = codigo2.value.trim();
-    const TelefonoDosValue = telefono2.value.trim();
     const TipoUsuarioValue = tipo.value.trim();
     const ContrasenaValue = password.value.trim();
-    /*console.log(TipoUsuarioValue)
-    alert(TipoUsuarioValue)*/
+
     const regex = /^[^()<>@,;:"[\]ç%&]*$/ 
 
     if (NombreValue == '') {
@@ -108,18 +103,6 @@ function validateFormCrearUsuario(event) {
         codigo.focus();
         return false;
     }
-
-    /*if (CodigoDosValue == '') {
-        alert('Por favor, ingresa tu Mensaje');
-        codigo2.focus();
-        return false;
-    }
-
-    if (TelefonoDosValue == '') {
-        alert('Por favor, ingresa tu Mensaje');
-        telefono2.focus();
-        return false;
-    }*/
 
     if (TipoUsuarioValue == '') {
         alert('Por favor, seleccione un Tipo de Usuario');
