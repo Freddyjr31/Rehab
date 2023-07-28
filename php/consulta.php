@@ -13,7 +13,7 @@ $dominios = $mysqli->query($sql5);
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>ConsultaLogin</title>
-    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
+    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/styles.css'>
     <link rel='stylesheet' href='../css/home.css'>
@@ -33,7 +33,7 @@ $dominios = $mysqli->query($sql5);
                 <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
                 <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
                 <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
-                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.php">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
                 <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
@@ -62,6 +62,29 @@ $dominios = $mysqli->query($sql5);
                                     </p>
                                 <?php
                                 }
+                                ?>
+                                <?php
+                                if (isset($_GET['alert'])) {
+                                ?>
+                                    <p class="notificacion">
+                                        <?php
+                                        echo $_GET['alert']
+                                        ?>
+
+                                    </p>
+                                <?php
+                                }
+                                ?> <?php
+            if (isset($_GET['error'])) {
+            ?>
+                                    <p class="error">
+                                        <?php
+                                        echo $_GET['error']
+                                        ?>
+
+                                    </p>
+                                <?php
+                            }
                                 ?>
 
                                 <div class="col-sm-8 ps-1">

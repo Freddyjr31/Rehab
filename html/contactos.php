@@ -21,7 +21,7 @@
           <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
           <a class="text-decoration-none text-reset" href="nosotros.html">Nosotros</a>
           <a class="text-decoration-none text-reset" href="servicios.html">Servicios</a>
-          <a class="text-decoration-none text-reset active" href="contactos.html">Contacto</a>
+          <a class="text-decoration-none text-reset active" href="contactos.php">Contacto</a>
           <a class="bordercon" href="../php/consulta.php">Consultar Cita</a>
           <a
           class="text-decoration-none text-reset"
@@ -42,6 +42,31 @@
       </div>
     </section>
 
+    <?php
+        if (isset($_GET['error'])) {
+        ?>
+            <p class="error">
+                <?php
+                echo $_GET['error']
+                ?>
+
+            </p>
+        <?php
+        }
+        ?>
+        <?php
+        if (isset($_GET['alert'])) {
+        ?>
+            <p class="notificacion">
+                <?php
+                echo $_GET['alert']
+                ?>
+
+            </p>
+        <?php
+        }
+        ?>
+
    
     <div class="container-fluid my-5">
       <div class="row">
@@ -58,10 +83,10 @@
 
          
           <!-- formulario de contacto -->
-          <form action="../php/models/EnviarCorreoContactos.php" id="FormContactos" method="post" class="row g-4 mt-2">
+          <form action="../php/models/EnviarCorreoContactos.php" id="FormularioCorreo" method="post" class="row g-4 mt-2">
             <div class="col-md-6">
               <input
-                placeholder="Nombre"
+                placeholder="Nombre *"
                 type="text"
                 class="form-control"
                 id="NombreCorreo"
@@ -71,7 +96,7 @@
             </div>
             <div class="col-md-6">
               <input
-                placeholder="Apellido"
+                placeholder="Apellido *"
                 type="text"
                 class="form-control"
                 id="ApellidoCorreo"
@@ -81,7 +106,7 @@
             </div>
             <div class="col-md-8">
               <input
-                placeholder="Email"
+                placeholder="Email *"
                 type="text"
                 class="form-control"
                 id="DireccionCorreo"
@@ -91,7 +116,7 @@
             </div>
             <div class="col-sm-4">
               <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio" required>
-                  <option value="" selected>Dominio </option>
+                  <option value="" selected>Dominio *</option>
                   <option value="@gmail.com">@gmail.com</option>
                   <option value="@hotmail.com">@hotmail.com</option>
                   <option value="@yahoo.com">@yahoo.com</option>
@@ -105,7 +130,7 @@
                 class="form-control"
                 id="AsuntoMail"
                 name="AsuntoMail"
-                placeholder="Asunto"
+                placeholder="Asunto *"
                 required
               />
             </div>
@@ -113,7 +138,7 @@
               <label></label>
               <textarea
                 class="form-control"
-                placeholder="Mensaje"
+                placeholder="Mensaje *"
                 name="MensajeMail"
                 id="MensajeMail"
                 style="height: 120px"
@@ -121,7 +146,7 @@
               ></textarea>
             </div>
             <div class="col-sm-12">
-              <button onclick="validateFormCONTACTOS(event)" type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
+              <button onclick="ValidarEnvioCorreo(event)" type="submit" class="btn btn-group-sm btn-danger mt-3">Enviar</button>
             </div>
           </form>
         </div>

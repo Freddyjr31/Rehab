@@ -21,7 +21,7 @@
 
     $fecha_actual = date('Y-m-d');
 
-    $sql = "SELECT * FROM citas WHERE fecha='$fecha' AND hora = '$hora' AND id_trabajador = '$especialista' AND NOT id_estatus = 5";
+    $sql = "SELECT * FROM citas WHERE fecha='$fecha' AND hora = '$hora' AND id_trabajador = '$especialista' AND id_estatus NOT IN(3,4,5)";
     $resultado = $mysqli->query($sql);
 
     $sql1 = "SELECT * FROM especialidades WHERE usuario_id='$especialista' AND servicio_id = '$servicio'";

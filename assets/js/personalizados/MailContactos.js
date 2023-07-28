@@ -1,14 +1,16 @@
-const FormContactos = document.querySelector('#FormContactos');
+const FormContactos = document.querySelector('#FormularioCorreo');
 const NombreCorreo = document.querySelector('#NombreCorreo');
+const ApellidoCorreo = document.querySelector('#ApellidoCorreo');
 const DireccionCorreo = document.querySelector('#DireccionCorreo');
 const dominioCorreo = document.querySelector('#dominio');
 const AsuntoMail = document.querySelector('#AsuntoMail');
 const MensajeMail = document.querySelector('#MensajeMail');
 
-function validateFormCONTACTOS(event) {
+function ValidarEnvioCorreo(event) {
     event.preventDefault(); // Evita que el formulario se envíe
 
     const NombreCorreoValue = NombreCorreo.value.trim();
+    const ApellidoCorreoValue = ApellidoCorreo.value.trim();
     const DirEmailValue = DireccionCorreo.value.trim();
     const dominioCorreoValue = dominioCorreo.value.trim();
     const AsuntoValue = AsuntoMail.value.trim();
@@ -21,6 +23,12 @@ function validateFormCONTACTOS(event) {
 
     if (NombreCorreoValue == '') {
         alert('Por favor, ingresa tu nombre');
+        NombreCorreo.focus();
+        return false;
+    }
+
+    if (ApellidoCorreoValue == '') {
+        alert('Por favor, ingresa tu Apellido');
         NombreCorreo.focus();
         return false;
     }

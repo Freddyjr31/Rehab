@@ -22,7 +22,7 @@
   //   }
     
 
-  //   header("Location: http://localhost/sistema/html/contactos.html")
+  //   header("Location: http://localhost/sistema/html/contactos.php")
 
 ///////////////////////////////////////////////////////////////////////////////////////
 // Carga la biblioteca PHPMailer
@@ -55,9 +55,10 @@ Correo electronico: '.$DireccionMail.$dominio.'
 
 // Envía el correo electrónico
 if (!$mail->send()) {
-    echo 'Error al enviar el correo electrónico: ' . $mail->ErrorInfo;
+    echo 'Error al enviar el correo electrónico: ' . $mail->ErrorInfo;    
+    header("Location: ../../html/contactos.php?error=Error mensaje no enviado");
 } else {
     echo 'El correo electrónico se ha enviado correctamente.';
-    header("Location:../../html/contactos.html");
+    header("Location: ../../html/contactos.php?alert=Mensaje enviado!");
 }
 ?>

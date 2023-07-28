@@ -9,10 +9,10 @@ if (($_SESSION['usuario']) == NULL) {
 include('conexionbd.php');
 $id = $_SESSION['id'];
 
-$sql = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_trabajador = '$id' AND id_estatus = 1";
+$sql = "SELECT usuarios2.nombre as nombreU, usuarios2.apellido as apellidoU, concat(cod_area.area,telefonos.numero) as numTeU ,citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios JOIN usuarios as usuarios2 ON usuarios2.id_usuarios = citas.id_cliente JOIN telefonos on telefonos.id_telefono = usuarios2.id_telefono JOIN cod_area ON cod_area.id_cod = telefonos.cod_id WHERE id_trabajador = '$id' AND id_estatus = 1";
 $pendientes = $mysqli->query($sql);
 
-$sql1 = "SELECT citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios WHERE id_trabajador = '$id' AND id_estatus = 4";
+$sql1 = "SELECT usuarios2.nombre as nombreUs, usuarios2.apellido as apellidoUs, concat(cod_area.area,telefonos.numero) as numTeUs, citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios JOIN usuarios as usuarios2 ON usuarios2.id_usuarios = citas.id_cliente JOIN telefonos on telefonos.id_telefono = usuarios2.id_telefono JOIN cod_area ON cod_area.id_cod = telefonos.cod_id WHERE id_trabajador = '$id' AND id_estatus = 4";
 $completadas = $mysqli->query($sql1);
 
 $sql2 = "SELECT usuarios.*, telefonos.*, cod_area.*, correos.*, dominios.* FROM usuarios JOIN correos ON usuarios.correo = correos.id_correo JOIN dominios ON correos.dominio_id = dominios.id_dominio JOIN telefonos ON usuarios.id_telefono = telefonos.id_telefono JOIN cod_area ON telefonos.cod_id = cod_area.id_cod WHERE id_usuarios = '$id'";
@@ -26,7 +26,7 @@ $usuario = $mysqli->query($sql2);
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Rehab Especialista</title>
-    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png" >
+    <link rel="icon" type="image/png" href="../img/icons/RSB_Icon2.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='../css/styles.css'>
     <link rel="stylesheet" href="../assets/bootstrap/bootstrap.min.css">
@@ -45,7 +45,7 @@ $usuario = $mysqli->query($sql2);
                 <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
                 <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
                 <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
-                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.php">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
                 <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
@@ -88,6 +88,12 @@ $usuario = $mysqli->query($sql2);
                                             <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
                                                 <div class="card-body">
                                                     <div class="row g-4">
+                                                    <div class="col-sm-6">
+                                                    <p><b>Cliente: </b>' . $fila['nombreU'] . ' ' . $fila['apellidoU'] . '</p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                            <p><b>Teléfono: </b>' . $fila['numTeU'] . '</p>
+                                                        </div>
                                                         <div class="col-sm-6">
                                                             <p><b>Servicio: </b>' . $fila['nombre_servicio'] . '</p>
                                                         </div>
@@ -102,7 +108,7 @@ $usuario = $mysqli->query($sql2);
                                                         </div>
                                                         <form class="row g-3" action="completar_cita.php" method="post">
                                                             <div class="col-sm-6">
-                                                                <input class="form-control" type="text" name="idcita" id="idcita" style="display: none;" value="'. $fila['id_cita'] .'" required />
+                                                                <input class="form-control" type="text" name="idcita" id="idcita" style="display: none;" value="' . $fila['id_cita'] . '" required />
                                                                 <button type="submit" class="btn btn-success">Completar cita</button>
                                                             </div>
                                                         </form>
@@ -132,6 +138,12 @@ $usuario = $mysqli->query($sql2);
                                             <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
                                                 <div class="card-body">
                                                     <div class="row g-4">
+                                                    <div class="col-sm-6">
+                                                    <p><b>Cliente: </b>' . $fila1['nombreUs'] . ' ' . $fila1['apellidoUs'] . '</p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                            <p><b>Teléfono: </b>' . $fila1['numTeUs'] . '</p>
+                                                        </div>
                                                         <div class="col-sm-6">
                                                             <p><b>Servicio: </b>' . $fila1['nombre_servicio'] . '</p>
                                                         </div>

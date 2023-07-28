@@ -23,7 +23,7 @@
                 <a class="text-decoration-none text-reset active" href="index.php" ;>Inicio</a>
                 <a class="text-decoration-none text-reset" href="./html/nosotros.html">Nosotros</a>
                 <a class="text-decoration-none text-reset" href="./html/servicios.html">Servicios</a>
-                <a class="text-decoration-none text-reset" href="./html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="./html/contactos.php">Contacto</a>
                 <a class="bordercon" href="./php/consulta.php">Consultar Cita</a>
                 <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>

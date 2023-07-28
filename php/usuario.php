@@ -48,7 +48,7 @@ $trabajador = $mysqli->query($sql4);
                 <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
                 <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
                 <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
-                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.php">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
                 <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
@@ -168,7 +168,7 @@ $trabajador = $mysqli->query($sql4);
                         <form class="row g-4 mt-2" method="post" action="registrar_cita.php" id="FormAgendarCitas">
                             <div class="col-sm-6">
                                 <label for="" class="form-label">Servicio * </label>
-                                <select class="form-select" aria-label="Default select example" name="servicio" placeholder="" id="servicio" required>
+                                <select class="form-select" aria-label="Default select example" name="servicio" placeholder="" id="servicio" onchange="actualizarSelect2()" required>
                                     <option selected>... </option>
                                     <?php
                                     if ($servicios->num_rows > 0) {
@@ -183,12 +183,12 @@ $trabajador = $mysqli->query($sql4);
                                 <label for="" class="form-label">Especialista *</label>
                                 <select class="form-select" aria-label="Default select example" name="especialista" placeholder="" id="especialista" required>
                                     <option selected>... </option>
-                                    <?php
+                                    <?php /*
                                     if ($trabajador->num_rows > 0) {
                                         while ($fila4 = $trabajador->fetch_assoc()) {
                                             echo '<option value="' . $fila4['id_usuarios'] . '">' . $fila4['nombre'] . $fila4['apellido'] . '</option>';
                                         }
-                                    }
+                                    }*/
                                     ?>
                                 </select>
                             </div>
@@ -201,33 +201,14 @@ $trabajador = $mysqli->query($sql4);
                                 <label class="form-label">Hora *</label>
                                 <!--<input class="form-control" id="horaCita" type="time" name="horaCita" list="listahorasdeseadas" min="06:00" max="15:30" required />-->
                                 <select class="form-select" id="horaCita" name="horaCita" required>
-                                    <option value="06:00">06:00</option>
-                                    <option value="07:30">07:30</option>
-                                    <option value="09:00">09:00</option>
+                                    <option value="07:00">07:00</option>
+                                    <option value="08:30">08:30</option>
+                                    <option value="10:00">10:00</option>
                                     <option value="10:30">10:30</option>
-                                    <option value="01:00">01:00</option>
-                                    <option value="02:30">02:30</option>
+                                    <option value="01:30">01:30</option>
+                                    <option value="03:20">03:20</option>
                                 </select>
                             </div>
-
-                            <!-- fecha dos 
-                            <div class="col-sm-6">
-                                <label class="form-label">Fecha tentativa 2: </label>
-                                <input class="form-control" type="date" name="fechaCita2" id="fechaCita2" min="2023-07-15" max="2030-12-31" required />
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label">Hora :</label>
-                                <input class="form-control" id="horaCita2" type="time" name="horaCita2" list="listahorasdeseadas" min="06:00" max="15:30" required />
-                            </div>-->
-                            <!-- fecha tres 
-                            <div class="col-sm-6">
-                                <label class="form-label">Fecha tentativa 3: </label>
-                                <input class="form-control" type="date" name="fechaCita3" name="fechaCita3" min="2023-07-15" max="2030-12-31" required />
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="form-label">Hora :</label>
-                                <input class="form-control" id="horaCita3" type="time" name="horaCita3" list="listahorasdeseadas" min="06:00" max="15:30" required />
-                            </div>-->
                             <div class="col-sm-12">
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="ValidarFormCita();">Agendar</button>
                             </div>
@@ -341,7 +322,9 @@ $trabajador = $mysqli->query($sql4);
     <script src="../assets/js/bootstrap.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/popper.js"></script>
-    <script src="../assets/js/personalizados/FornularioCitas.js" component={} />"></script>
+    <script src="../assets/js/personalizados/FornularioCitas.js"></script>
+    <script src="../assets/js/personalizados/ActualizarSelectEspecialista.js"></script>
+
 </body>
 
 </html>

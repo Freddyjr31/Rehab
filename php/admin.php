@@ -71,7 +71,7 @@ if ($estatus_usuarios->num_rows > 0) {
                 <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
                 <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
                 <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
-                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.php">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
                 <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
@@ -152,11 +152,6 @@ if ($estatus_usuarios->num_rows > 0) {
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Correo * </label>
-                                    <input type="text" name="correo" placeholder="" id="correo" class="form-control" required />
-                                </div>
-
-                                <div class="col-md-6">
                                     <label for="" class="form-label">Dominio * </label>
                                     <select class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio" required>
                                         <?php
@@ -167,6 +162,11 @@ if ($estatus_usuarios->num_rows > 0) {
                                         }
                                         ?>
                                     </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Correo * </label>
+                                    <input type="text" name="correo" placeholder="" id="correo" class="form-control" required onkeyup="verificarDisponibilidadCorreo()"/>
+                                    <span id="mensaje-correo"></span>
                                 </div>
 
 
@@ -422,6 +422,8 @@ if ($estatus_usuarios->num_rows > 0) {
         <script src="../assets/js/bootstrap.bundle.min.js"></script>
         <script src="../assets/js/popper.js"></script>
         <script src="../assets/js/personalizados/AdminCrearUsuario.js"></script>
+        <script src="../assets/js/personalizados/ValidarCorreoExistenteAdmin.js"></script>
+
     </body>
 
 </html>

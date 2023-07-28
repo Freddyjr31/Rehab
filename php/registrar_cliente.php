@@ -42,9 +42,10 @@
         $sql = "INSERT INTO usuarios (nombre, apellido, correo, Clave, id_telefono, sexo, cedula, rol_id, id_estatus_usuario) VALUES ('$nombre', '$apellido', '$idcorreo', '$password', '$idtelefono', '$sexo', '$cedula',2,1)";
         if ($mysqli->query($sql) === TRUE) {
             echo "Usuario registrado correctamente";
-            header('Location: consulta.php');
+            header('Location: consulta.php?alert=Usuario registrado correctamente');
         } else {
             echo "Error al registrar el usuario: " . $mysqli->error;
+            header('Location: consulta.php?error=Usuario no registrado');
         }
     }
 ?>

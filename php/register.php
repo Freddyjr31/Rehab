@@ -36,7 +36,7 @@ $cod_area = $mysqli->query($sql6);
                 <a class="text-decoration-none text-reset" href="../index.php" ;>Inicio</a>
                 <a class="text-decoration-none text-reset" href="../html/nosotros.html">Nosotros</a>
                 <a class="text-decoration-none text-reset" href="../html/servicios.html">Servicios</a>
-                <a class="text-decoration-none text-reset" href="../html/contactos.html">Contacto</a>
+                <a class="text-decoration-none text-reset" href="../html/contactos.php">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
                 <a class="text-decoration-none text-reset" target="_blank" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
@@ -84,10 +84,7 @@ $cod_area = $mysqli->query($sql6);
                                         <option value="F">Femenino</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="" class="form-label">Correo * </label>
-                                    <input required type="text" name="correo" placeholder="" id="correo" class="form-control" />
-                                </div>
+
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Dominio * </label>
                                     <select required class="form-select" aria-label="Default select example" name="dominio" placeholder="" id="dominio">
@@ -100,6 +97,12 @@ $cod_area = $mysqli->query($sql6);
                                         ?>
                                     </select>
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="" class="form-label">Correo * </label>
+                                    <input required type="text" name="correo" placeholder="" id="correo" class="form-control" onkeyup="verificarDisponibilidadCorreo()"/>
+                                    <span id="mensaje-correo"></span>
+                                </div>
+                                
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Código de área * </label>
@@ -125,7 +128,7 @@ $cod_area = $mysqli->query($sql6);
                                     <input type="password" name="password" placeholder="" id="password" class="form-control" required />
                                 </div>
 
-                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormR(event);">Registrarme</button>
+                                <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormR(event)" >Registrarme</button>
                             </form>
                         </div>
                     </div>
@@ -199,6 +202,7 @@ $cod_area = $mysqli->query($sql6);
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/popper.js"></script>
     <script src="../assets/js/personalizados/registrate.js"></script>
+    <script src="../assets/js/personalizados/validarCorreoExistente.js"></script>
 </body>
 
 </html>

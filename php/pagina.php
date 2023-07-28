@@ -22,7 +22,7 @@
                 <a style="color:black" href="pagina.php" ;>Inicio</a>
                 <a class="colorhover" href="../html/nosotros.html">Nosotros</a>
                 <a class="colorhover" href="../html/servicios.html">Servicios</a>
-                <a class="colorhover" href="../html/contactos.html">Contacto</a>
+                <a class="colorhover" href="../html/contactos.php">Contacto</a>
                 <a class="bordercon" href="consulta.php">Consultar Cita</a>
                 <a style="color:black" href="https://www.google.com/maps/place/Camino+Real/@10.3424338,-67.0376361,15z/data=!4m6!3m5!1s0x8c2a8d8ab478cf49:0xa1118287a3e57677!8m2!3d10.3424338!4d-67.0376361!16s%2Fg%2F11jv7rdjrf?entry=ttu">Cómo llegar</a>
             </nav>
