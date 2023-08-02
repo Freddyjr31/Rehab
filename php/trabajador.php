@@ -2,7 +2,8 @@
 
 session_start();
 
-if (($_SESSION['usuario']) == NULL) {
+if (($_SESSION['usuario']) == NULL || $_SESSION['rol'] != 3){
+    session_destroy();
     header('Location: consulta.php');
 }
 

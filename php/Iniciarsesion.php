@@ -25,7 +25,7 @@
 
             // $Clave = md5($Clave);
 
-            $sql = "SELECT * FROM usuarios INNER JOIN correos ON id_correo = usuarios.correo INNER JOIN dominios ON id_dominio = correos.dominio_id WHERE correos.nombre_correo = '$Usuario' AND usuarios.Clave='$Clave' AND dominios.id_dominio = '$dominio'";
+            $sql = "SELECT * FROM usuarios INNER JOIN correos ON id_correo = usuarios.correo INNER JOIN dominios ON id_dominio = correos.dominio_id WHERE correos.nombre_correo = '$Usuario' AND usuarios.Clave='$Clave' AND dominios.id_dominio = '$dominio' AND usuarios.is_estatus_usuario = 1";
             $result = mysqli_query($mysqli, $sql);
 
             if (mysqli_num_rows($result) === 1) {
@@ -35,6 +35,7 @@
                     $_SESSION['nombre'] = $row['nombre'];
                     $_SESSION['apellido'] = $row['apellido'];
                     $_SESSION['id'] = $row['id_usuarios'];
+                    $_SESSION['rol'] = $row['rol_id'];
 
                     if ($row['rol_id'] == 1){
                         header("Location: admin.php");
