@@ -39,6 +39,6 @@ function login_validacion(event) {
         return false;
     }
     //el formulario se envia
-    alert("Bienvenido a Rehab!");
+    //alert("Bienvenido a Rehab!");
     return FormLogin.submit();
 }
