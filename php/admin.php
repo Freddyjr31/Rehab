@@ -132,11 +132,11 @@ if ($estatus_usuarios->num_rows > 0) {
                             <form class="row g-4" action="registrar_trabajador.php" method="post" id="FormCrearUsuarioAdmin">
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Nombre * </label>
-                                    <input type="text" name="nombre" placeholder="" id="nombre" class="form-control" required />
+                                    <input type="text" maxlength="20" name="nombre" placeholder="" id="nombre" class="form-control" required />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Apellido * </label>
-                                    <input type="text" name="apellido" placeholder="" id="apellido" class="form-control" required />
+                                    <input type="text" maxlength="20" name="apellido" placeholder="" id="apellido" class="form-control" required />
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Sexo * </label>
@@ -148,7 +148,7 @@ if ($estatus_usuarios->num_rows > 0) {
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Cédula * </label>
-                                    <input type="number" name="cedula" placeholder="" id="cedula" class="form-control" required />
+                                    <input type="number" maxlength="8" name="cedula" placeholder="" id="cedula" class="form-control" required />
                                 </div>
 
                                 <div class="col-md-6">
@@ -165,7 +165,7 @@ if ($estatus_usuarios->num_rows > 0) {
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Correo * </label>
-                                    <input type="text" name="correo" placeholder="" id="correo" class="form-control" required onkeyup="verificarDisponibilidadCorreo()"/>
+                                    <input type="text" maxlength="30" name="correo" placeholder="" id="correo" class="form-control" required onkeyup="verificarDisponibilidadCorreo()"/>
                                     <span id="mensaje-correo"></span>
                                 </div>
 
@@ -187,7 +187,7 @@ if ($estatus_usuarios->num_rows > 0) {
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Telefono * </label>
-                                    <input type="number" name="telefono" placeholder="" id="telefono" class="form-control" required />
+                                    <input type="number" maxlength="7" name="telefono" placeholder="" id="telefono" class="form-control" required />
                                 </div>
 
                                 <div class="col-md-12">
@@ -225,7 +225,7 @@ if ($estatus_usuarios->num_rows > 0) {
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
-                                    <input type="password" name="password" placeholder="" id="password" class="form-control" required />
+                                    <input type="password" maxlength="20" name="password" placeholder="" id="password" class="form-control" required />
                                 </div>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormCrearUsuario(event)">Crear usuario</button>
                             </form>

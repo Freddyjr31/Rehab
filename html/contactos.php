@@ -91,6 +91,7 @@
                 class="form-control"
                 id="NombreCorreo"
                 name="NombreCorreo"
+                maxlength="20"
                 required
               />
             </div>
@@ -101,6 +102,7 @@
                 class="form-control"
                 id="ApellidoCorreo"
                 name="ApellidoCorreo"
+                maxlength="20"
                 required
               />
             </div>
@@ -111,6 +113,7 @@
                 class="form-control"
                 id="DireccionCorreo"
                 name="DireccionCorreo"
+                maxlength="20"
                 required
               />
             </div>
@@ -132,6 +135,7 @@
                 name="AsuntoMail"
                 placeholder="Asunto *"
                 required
+                maxlength="80"
               />
             </div>
             <div class="col-sm-12">
@@ -142,6 +146,7 @@
                 name="MensajeMail"
                 id="MensajeMail"
                 style="height: 120px"
+                maxlength="200"
                 required
               ></textarea>
             </div>

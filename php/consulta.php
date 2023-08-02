@@ -74,21 +74,10 @@ $dominios = $mysqli->query($sql5);
                                     </p>
                                 <?php
                                 }
-                                ?> <?php
-            if (isset($_GET['error'])) {
-            ?>
-                                    <p class="error">
-                                        <?php
-                                        echo $_GET['error']
-                                        ?>
-
-                                    </p>
-                                <?php
-                            }
-                                ?>
+                                ?> 
 
                                 <div class="col-sm-8 ps-1">
-                                    <input type="text" name="Usuario" placeholder="Usuario" id="usuario" class="form-control" required />
+                                    <input type="text" name="Usuario" placeholder="Usuario" id="usuario" class="form-control" required maxlength="30"/>
                                 </div>
 
                                 <div class="col-sm-4 p-0">
@@ -106,7 +95,7 @@ $dominios = $mysqli->query($sql5);
                                 </div>
 
                                 <div class="col-sm-12 p-0">
-                                    <input type="password" name="Clave" placeholder="Contraseña" id="clave" class="form-control" required />
+                                    <input type="password" name="Clave" placeholder="Contraseña" id="clave" class="form-control" required maxlength="20"/>
                                 </div>
 
                                 <button type="submit" class="btn btn-danger" onclick="login_validacion(event)"> Ingresar </button>

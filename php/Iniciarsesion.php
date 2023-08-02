@@ -51,12 +51,14 @@
                 }
 
             }else {
+                
                 header("Location: consulta.php?error=El usuario o la clave son incorrectas");
                 exit();
+                
             }
         }
 
     } else {
         header("Location: consulta.php");
-                exit();
+        exit();
     }
