@@ -68,7 +68,7 @@ $usuario = $mysqli->query($sql2);
         <!-- Menu de usuario -->
         <div class="row mt-3 mb-5">
             <div class="d-flex align-items-start">
-                <div class="nav flex-column nav-pills me-3 mt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="nav flex-column nav-pills me-3 mt-2 ListaService" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="m-2 BtnMenuUsuario active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Citas pendientes</button>
                     <!--<button class="m-2 BtnMenuUsuario" id="v-pills-confirm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-confirm" type="button" role="tab" aria-controls="v-pills-confirm" aria-selected="false">Citas confirmadas</button>-->
                     <button class="m-2 BtnMenuUsuario" id="v-pills-complet-tab" data-bs-toggle="pill" data-bs-target="#v-pills-complet" type="button" role="tab" aria-controls="v-pills-complet" aria-selected="false">Citas completadas</button>

@@ -95,7 +95,7 @@ $trabajador = $mysqli->query($sql4);
         <!-- Menu de usuario -->
         <div class="row mt-3 mb-5">
             <div class="d-flex align-items-start">
-                <div class="nav flex-column nav-pills me-3 mt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <div class="nav flex-column nav-pills me-3 mt-2 ListaService" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="m-2 BtnMenuUsuario active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Consultar citas</button>
                     <button class="m-2 BtnMenuUsuario" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Agendar cita</button>
                     <button class="m-2 BtnMenuUsuario" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Mi Perfil</button>
