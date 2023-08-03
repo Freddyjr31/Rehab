@@ -37,14 +37,14 @@ $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 $mail->isSMTP();
 $mail->Host = 'smtp.gmail.com';
 $mail->SMTPAuth = true;
-$mail->Username = 'bernalfreddy6@gmail.com';
-$mail->Password = 'jqyrpsmneyzvreyo';
+$mail->Username = 'inversionesrehab@gmail.com';
+$mail->Password = 'isqrmwoctqnyiike';
 $mail->SMTPSecure = 'tls';
 $mail->Port = 587;
 
 // Configura el remitente y el destinatario del correo
-$mail->setFrom('bernalfreddy6@gmail.com', 'Remitente');
-$mail->addAddress('bernalfreddy6@gmail.com', 'Destinatario');
+$mail->setFrom('inversionesrehab@gmail.com', 'Remitente');
+$mail->addAddress('inversionesrehab@gmail.com', 'Destinatario');
 
 // Configura el asunto y el cuerpo del correo
 $mail->Subject = $asunto;

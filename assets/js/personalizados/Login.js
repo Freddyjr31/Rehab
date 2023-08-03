@@ -22,7 +22,7 @@ function login_validacion(event) {
     }
 
     if (!regex.test(UsuarioValue)) {
-        alert('Por favor No ingresar @ en el campo usuario');
+        alert('Por favor No ingresar @ en el campo correo, selecciona el dominio a un lado');
         Usuario.focus();
         return false;
     }

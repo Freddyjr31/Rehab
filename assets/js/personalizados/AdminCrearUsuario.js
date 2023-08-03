@@ -69,7 +69,7 @@ function validateFormCrearUsuario(event) {
     }
 
     if (!regex.test(CorreoValue)) {
-        alert('Por favor No ingresar @ en el campo correo');
+        alert('Por favor No ingresar @ en el campo correo, selecciona el dominio a un lado');
         correo.focus();
         return false;
     }
