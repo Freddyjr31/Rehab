@@ -118,9 +118,9 @@ if ($estatus_usuarios->num_rows > 0) {
             }
             ?>
             <!-- Menu de usuario -->
-            <div class="row mt-3 mb-5">
+            <div class="row mt-3 mb-5 ">
                 <div class="d-flex align-items-start">
-                    <div class="nav flex-column nav-pills me-3 mt-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="nav flex-column nav-pills me-3 mt-2 ListaService" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                         <button class="m-2 BtnMenuUsuario active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Crear usuarios</button>
                         <button class="m-2 BtnMenuUsuario" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Usuarios</button>
                         <button class="m-2 BtnMenuUsuario" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Citas completadas</button>
@@ -235,18 +235,17 @@ if ($estatus_usuarios->num_rows > 0) {
                             <h3 class="mt-3">Todos los Usuarios</h3>
                             <hr>
                             <!-- TODOS LOS USUARIOS DENTRO DEL SISTEMA -->
+                            <div class="table-responsive ResponsiveTable">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nombre</th>
-                                        <th scope="col">Apellido</th>
-                                        <th scope="col">correo</th>
-                                        <th scope="col">cédula</th>
-                                        <th scope="col">Teléfono</th>
-                                        <th scope="col">Estatus</th>
-                                        <th scope="col">Rol</th>
-                                        <th scope="col">Actualizar estatus</th>
+                                        <th scope="col" class="text-sm"> Nombre</th>
+                                        <th scope="col" class="text-sm">Apellido</th>
+                                        <th scope="col" class="text-sm">correo</th>
+                                        <th scope="col" class="text-sm">cédula</th>
+                                        <th scope="col" class="text-sm">Estatus</th>
+                                        <th scope="col" class="text-sm">Rol</th>
+                                        <th scope="col" class="text-sm">Actualizar</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -255,17 +254,15 @@ if ($estatus_usuarios->num_rows > 0) {
                                     if ($resultado->num_rows > 0) {
                                         while ($fila = $resultado->fetch_assoc()) {
                                             echo "<tr>
-                                                        <th scope='row'>1</th>
-                                                        <td>" . $fila["nombre"] . "</td>
-                                                        <td>" . $fila["apellido"] . "</td>
-                                                        <td>" . $fila["nombre_correo"] . $fila["nombre_dominio"] . "</td>
-                                                        <td>" . $fila["cedula"] . "</td>
-                                                        <td>" . $fila["area"] . $fila["numero"] . "</td>
-                                                        <td>" . $fila["estatus"] . "</td>
-                                                        <td>" . $fila["nombre_rol"] . "</td>
-                                                        <td>
+                                                        <td class='text-sm fs-6 fw-light'>" . $fila["nombre"] . "</td>
+                                                        <td class='text-sm fs-6 fw-light'>" . $fila["apellido"] . "</td>
+                                                        <td class='text-sm fs-6 fw-light'>" . $fila["nombre_correo"] . $fila["nombre_dominio"] . "</td>
+                                                        <td class='text-sm fs-6 fw-light'>" . $fila["cedula"] . "</td>
+                                                        <td class='text-sm fs-6 fw-light'>" . $fila["estatus"] . "</td>
+                                                        <td class='text-sm fs-6 fw-light'>" . $fila["nombre_rol"] . "</td>
+                                                        <td class='text-sm fs-6 fw-light'>
                                                         <form class='row g-3' action='actualizar_usuario.php' method='post'>
-                                                            <div class='col-sm-6'>
+                                                            <div class='col-sm-6 text-sm'>
                                                                 <input class='form-control' type='text' name='idusuario' id='idusuario' style='display: none;' value='". $fila['id_usuarios'] ."' required />
                                                                 <select class='form-select' aria-label='Default select example' name='estatus' placeholder='' id='especialista' required>
                                                                     <option selected>Seleccionar Estatus</option>";
@@ -276,7 +273,7 @@ if ($estatus_usuarios->num_rows > 0) {
                                                                     echo "</select>
                                                             </div>
                                                             <div class='col-sm-6'>
-                                                                <button type='submit' class='btn btn-primary'>Aceptar</button>
+                                                                <button type='submit' class='btn btn-primary btn-sm text-sm'>Aceptar</button>
                                                             </div>
                                                         </form>
                                                         </td>
@@ -289,6 +286,8 @@ if ($estatus_usuarios->num_rows > 0) {
                                     ?>
                                 </tbody>
                             </table>
+                            </div>
+                            
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -325,8 +324,8 @@ if ($estatus_usuarios->num_rows > 0) {
                             if ($citas->num_rows > 0) {
                                 while ($fila2 = $citas->fetch_assoc()) {
                                     echo '<div class="row row-cols-1 row-cols-md-12 g-3">
-                                            <div class="col-md">
-                                                <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
+                                            <div class="col-md mb-3">
+                                                <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow mb-3">
                                                     <div class="card-body">
                                                         <div class="row g-4">
                                                             <div class="col-sm-6">
