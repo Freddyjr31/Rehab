@@ -22,7 +22,8 @@
 
     $fecha_actual = date('Y-m-d');
 
-    $sql = "SELECT * FROM citas WHERE fecha='$fecha' AND hora = '$hora' AND id_trabajador = '$especialista' AND id_estatus NOT IN(3,4,5)";
+    //$sql = "SELECT * FROM citas WHERE fecha='$fecha' AND hora = '$hora' AND id_trabajador = '$especialista' AND id_estatus NOT IN(3,4,5)";
+    $sql = "SELECT * FROM citas WHERE fecha='$fecha' AND hora = '$hora' AND id_estatus NOT IN(3,4,5)";
     $resultado = $mysqli->query($sql);
 
     $sql1 = "SELECT * FROM especialidades WHERE usuario_id='$especialista' AND servicio_id = '$servicio'";
@@ -41,6 +42,7 @@
             header('Location: usuario.php?alert=Su cita se ha creado correctamente');
         } else {
             echo "Error al crear la cita: " . $mysqli->error;
+            header('Location: usuario.php?error=Su cita no se ha creado, disculpe los inconvenientes');
         }
     }
 ?>

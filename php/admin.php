@@ -149,7 +149,8 @@ if ($estatus_usuarios->num_rows > 0) {
                                 </div>
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Cédula * </label>
-                                    <input oninput="javascript: if (this.value.length > 8) this.value = this.value.slice(0, 8);" type="number" name="cedula" placeholder="" id="cedula" class="form-control" required />
+                                    <input oninput="javascript: if (this.value.length > 8) this.value = this.value.slice(0, 8);" type="number" name="cedula" placeholder="" id="cedula" class="form-control" onkeyup="verificarDisponibilidadCI()" required />
+                                    <span id="mensaje-ci"></span>
                                 </div>
 
                                 <div class="col-md-6">
@@ -188,7 +189,8 @@ if ($estatus_usuarios->num_rows > 0) {
 
                                 <div class="col-md-6">
                                     <label for="" class="form-label">Telefono * </label>
-                                    <input oninput="javascript: if (this.value.length > 7) this.value = this.value.slice(0, 7);" type="number" name="telefono" placeholder="" id="telefono" class="form-control" required />
+                                    <input oninput="javascript: if (this.value.length > 7) this.value = this.value.slice(0, 7);" type="number" name="telefono" placeholder="" id="telefono" class="form-control" onkeyup="verificarDisponibilidadTelf()" required />
+                                    <span id="mensaje-telf"></span>
                                 </div>
 
                                 <div class="col-md-12">
@@ -226,7 +228,7 @@ if ($estatus_usuarios->num_rows > 0) {
 
                                 <div class="col-md-12">
                                     <label for="" class="form-label">Contraseña * </label>
-                                    <input type="password" maxlength="20" name="password" placeholder="" id="password" class="form-control" required />
+                                    <input type="password" maxlength="8" name="password" placeholder="" id="password" class="form-control" required />
                                 </div>
                                 <button type="submit" class="btn btn-group-sm btn-danger mt-3" onclick="validateFormCrearUsuario(event)">Crear usuario</button>
                             </form>
@@ -423,7 +425,8 @@ if ($estatus_usuarios->num_rows > 0) {
         <script src="../assets/js/popper.js"></script>
         <script src="../assets/js/personalizados/AdminCrearUsuario.js"></script>
         <script src="../assets/js/personalizados/ValidarCorreoExistenteAdmin.js"></script>
-
+        <script src="../assets/js/personalizados/validarCI_and_Telf_Admin.js"></script>
+        
     </body>
 
 </html>
