@@ -13,7 +13,7 @@
 	$query = "SELECT * FROM roles";
    
     $mysqli = new mysqli($hostname,$username, $password,$dbname,3306);
-
+	$mysqli->query("SET NAMES 'utf8'");
     if ($mysqli->connect_errno) {
         die("Conexión fallida: " . $mysqli->connect_errno);
     }

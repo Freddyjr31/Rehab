@@ -180,7 +180,7 @@ $cod_area = $mysqli->query($sql6);
             </div>
 
             <div class="col-md-4 p-2">
-                <h6 class="text-center">Teléfonos</h6>
+                <h6 class="text-center">Teléfono </h6>
                 <div class="col m-2">
                     <div class="input-group mb-2 d-flex justify-content-center">
                         <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />

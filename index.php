@@ -73,7 +73,7 @@
                 <hr>
                 <p class="text-sm fw-light TextAlign">Somos una empresa dedicada a la prestación de servicios de rehabilitación, enfermería, belleza, estética corporal y facial, su necesidad actual está centrada en mejorar la gestión de sus servicios y facilitar de esta manera la comunicación con sus clientes.</p>
                 <div class="col-sm-12">
-                <a href="./html/servicios.html" type="button" class="btn btn-danger">servicios</a>    
+                <a href="./html/servicios.html" type="button" class="btn btn-danger">Servicios</a>    
                 </div>
                 <!--<img src="./img/masaje2.jpg" class="img-fluid shadow ImgCalidadGarantizada mt-5">-->
             </div>
@@ -162,7 +162,7 @@
             </div>
 
             <div class="col-md-4 p-2">
-                <h6 class="text-center">Teléfonos</h6>
+                <h6 class="text-center">Teléfono </h6>
                 <div class="col m-2 ">
                     <div class="input-group mb-2 d-flex justify-content-center">
                         <img src="./img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="">

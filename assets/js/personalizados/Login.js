@@ -34,7 +34,7 @@ function login_validacion(event) {
     }
     // valido la contraseña
     if (contrasenaValue == '') {
-        alert('Por favor, ingresa tu contrseña');
+        alert('Por favor, ingresa tu contraseña');
         contrasena.focus();
         return false;
     }

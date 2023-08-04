@@ -2,7 +2,7 @@
 
 session_start();
 
-if (($_SESSION['usuario']) == NULL || $_SESSION['rol'] != 3){
+if (($_SESSION['usuario']) == NULL || $_SESSION['rol'] != 3) {
     session_destroy();
     header('Location: consulta.php');
 }
@@ -36,6 +36,31 @@ $usuario = $mysqli->query($sql2);
 </head>
 
 <body class="body">
+
+    <?php
+    if (isset($_GET['error'])) {
+    ?>
+        <p class="error">
+            <?php
+            echo $_GET['error']
+            ?>
+
+        </p>
+    <?php
+    }
+    ?>
+    <?php
+    if (isset($_GET['alert'])) {
+    ?>
+        <p class="notificacion">
+            <?php
+            echo $_GET['alert']
+            ?>
+
+        </p>
+    <?php
+    }
+    ?>
 
     <header>
         <div class="wrapper">
@@ -252,7 +277,7 @@ $usuario = $mysqli->query($sql2);
             </div>
 
             <div class="col-md-4 p-2">
-                <h6 class="text-center">Teléfonos</h6>
+                <h6 class="text-center">Teléfono </h6>
                 <div class="col m-2">
                     <div class="input-group mb-2 d-flex justify-content-center">
                         <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />

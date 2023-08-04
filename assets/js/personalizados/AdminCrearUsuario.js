@@ -57,7 +57,7 @@ function validateFormCrearUsuario(event) {
     }
 
     if (CedulaValue.length > 8) {
-        alert('Número de cédula excede el limite');
+        alert('Número de cédula excede el límite');
         cedula.focus();
         return false;
     }
@@ -81,7 +81,7 @@ function validateFormCrearUsuario(event) {
     }
 
     if (TelefonoValue.length < 7) {
-        alert('Número de telefono incompleto');
+        alert('Número de teléfono incompleto');
         telefono.focus();
         return false;
     }
@@ -93,13 +93,13 @@ function validateFormCrearUsuario(event) {
     }
 
     if (TelefonoValue == '') {
-        alert('Por favor, ingrese un número de telefono');
+        alert('Por favor, ingrese un número de teléfono');
         telefono.focus();
         return false;
     }
 
     if (CodigoValue == '') {
-        alert('Por favor, ingrese codigo telefonico');
+        alert('Por favor, ingrese código telefónico');
         codigo.focus();
         return false;
     }

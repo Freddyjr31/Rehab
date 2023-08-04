@@ -34,6 +34,9 @@ $servicios = $mysqli->query($sql7);
 $sql8 = "SELECT * FROM estatus_usuario";
 $estatus_usuarios = $mysqli->query($sql8);
 
+$sqlCP = "SELECT usuarios2.nombre as nombreU, usuarios2.apellido as apellidoU, concat(cod_area.area,telefonos.numero) as numTeU ,citas.*, servicios.*, usuarios.* FROM citas JOIN servicios ON citas.id_servicio = servicios.id JOIN usuarios ON citas.id_trabajador = usuarios.id_usuarios JOIN usuarios as usuarios2 ON usuarios2.id_usuarios = citas.id_cliente JOIN telefonos on telefonos.id_telefono = usuarios2.id_telefono JOIN cod_area ON cod_area.id_cod = telefonos.cod_id WHERE id_estatus = 1";
+$pendientes = $mysqli->query($sqlCP);
+
 $ids = array();
 $estatus = array();
 
@@ -124,6 +127,7 @@ if ($estatus_usuarios->num_rows > 0) {
                         <button class="m-2 BtnMenuUsuario active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Crear usuarios</button>
                         <button class="m-2 BtnMenuUsuario" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Usuarios</button>
                         <button class="m-2 BtnMenuUsuario" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Citas completadas</button>
+                        <button class="m-2 BtnMenuUsuario" id="v-pills-cp-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cp" type="button" role="tab" aria-controls="v-pills-cp" aria-selected="true">Citas pendientes</button>
                     </div>
                     <div class="tab-content w-100 mb-5" id="v-pills-tabContent">
                         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
@@ -173,7 +177,7 @@ if ($estatus_usuarios->num_rows > 0) {
 
 
                                 <div class="col-md-6">
-                                    <label for="" class="form-label">Codigo de área * </label>
+                                    <label for="" class="form-label">Código de área * </label>
                                     <select class="form-select" aria-label="Default select example" name="codigo" placeholder="" id="codigo" required>
                                         <option value="" selected>... </option>
                                         <?php
@@ -243,8 +247,8 @@ if ($estatus_usuarios->num_rows > 0) {
                                     <tr>
                                         <th scope="col" class="text-sm"> Nombre</th>
                                         <th scope="col" class="text-sm">Apellido</th>
-                                        <th scope="col" class="text-sm">correo</th>
-                                        <th scope="col" class="text-sm">cédula</th>
+                                        <th scope="col" class="text-sm">Correo electrónico</th>
+                                        <th scope="col" class="text-sm">Cédula</th>
                                         <th scope="col" class="text-sm">Estatus</th>
                                         <th scope="col" class="text-sm">Rol</th>
                                         <th scope="col" class="text-sm">Actualizar</th>
@@ -354,6 +358,57 @@ if ($estatus_usuarios->num_rows > 0) {
 
                             ?>
                         </div>
+
+                        <!-- citas pendientes -->
+                        <div class="tab-pane fade" id="v-pills-cp" role="tabpanel" aria-labelledby="v-pills-cp-tab" tabindex="0">
+                        <h3 class="mt-3">Citas pendientes</h3>
+                        <hr>
+                        <!-- CONSULTAR CITAS PENDIENTES -->
+                        <div class="row row-cols-1 row-cols-md-2 g-3">
+                            <?php
+
+                            if ($pendientes->num_rows > 0) {
+                                while ($fila2 = $pendientes->fetch_assoc()) {
+                                    echo '<div class="col-md">
+                                            <div class="card border-0 h-100 CardConsultaUsuario p-3 shadow">
+                                                <div class="card-body">
+                                                    <div class="row g-4">
+                                                    <div class="col-sm-6">
+                                                    <p><b>Cliente: </b>' . $fila2['nombreU'] . ' ' . $fila['apellidoU'] . '</p>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                            <p><b>Teléfono: </b>' . $fila2['numTeU'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Servicio: </b>' . $fila2['nombre_servicio'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Especialista: </b>' . $fila2['nombre'] . ' ' . $fila2['apellido'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Fecha y Hora: </b>' . $fila2['fecha'] . ' ' . $fila2['hora'] . '</p>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <p><b>Estatus: </b><span class="badge rounded-pill text-bg-warning">Pendiente</span></p>
+                                                        </div>
+                                                        <form class="row g-3" action="completar_cita.php" method="post">
+                                                            <div class="col-sm-6">
+                                                                <input class="form-control" type="text" name="idcita" id="idcita" style="display: none;" value="' . $fila2['id_cita'] . '" required />
+                                                                <button type="submit" class="btn btn-success">Completar cita</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                }
+                            } else {
+                                echo "No existen citas";
+                            }
+
+                            ?>
+                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -397,7 +452,7 @@ if ($estatus_usuarios->num_rows > 0) {
                 </div>
 
                 <div class="col-md-4 p-2">
-                    <h6 class="text-center">Teléfonos</h6>
+                    <h6 class="text-center">Teléfono </h6>
                     <div class="col m-2">
                         <div class="input-group mb-2 d-flex justify-content-center">
                             <img src="../img/icons/icons8-teléfono-64.png" width="30" height="30" class="d-inline-block align-top" alt="" />

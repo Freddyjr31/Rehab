@@ -34,7 +34,7 @@ function ValidarFormCita() {
     }
     
     if (fechaValue == '') {
-        alert('Por favor, ingresa tu contrseña');
+        alert('Por favor, ingresa tu contraseña');
         fechaCita.focus();
         return false;
     }
